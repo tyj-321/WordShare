@@ -84,6 +84,14 @@
             margin-bottom: 20px;
         }
 
+        .new-article :nth-child(6),
+        .new-article :nth-child(7),
+        .new-article :nth-child(8),
+        .new-article :nth-child(9),
+        .new-article :nth-child(10) {
+            display: none;
+        }
+
         .left-img {
             display: inline-block;
             vertical-align: bottom;
@@ -332,6 +340,86 @@
                         <i></i>
                     </div>
                 </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new5.jpg" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new6.jpg" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new7.jpg" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new8.png" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new9.png" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
             </ul>
             <button type="button" class="btn btn-success load-more">Load More</button>
         </div>
@@ -414,7 +502,7 @@
         console.log(resp);
         const articleData = resp.data.objects;
         // 获取到数据就把数据填充进对应的DOM元素中 只获取前5条，后面需要再加载
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 10; i++) {
             // 修改超链接地址
             $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:first a").attr("href", articleData[i].original_url);
             $(".new-list li:nth-child(" + (i + 1) + ") .left-img a").attr("href", articleData[i].original_url);
@@ -441,51 +529,18 @@
             $(".hot-list li:nth-child(" + (j + 1) + ") span").append(newData[j].num_reviews);
         }
     }
-    function getMoreData(resp) {
-        console.log(resp);
-    }  //我也不知道为什么要在这里先申明，否则请求不到数据
 
     // 给加载更多按钮添加点击事件
     // 把按钮消失，创建列表元素，然后请求数据，再填充数据
     $(".load-more").bind("click", () => {
         // 按钮消失
         $(".load-more").css("display", "none");
-        var script = document.createElement("script");
-        script.id = "sc";
-        script.src = "../js/more.js";
-        document.body.appendChild(script);
-        function getMoreData(resp) {
-            console.log(resp);
-            for (let k = 5; k < 10; k++) {
-                // 得先有元素，估计要一个一个添加节点了，我丢，
-                const newLi = `<div class="left-img">
-                        <a href="" target="_blank">
-                            <img src="../src/new4.jpg" alt="新闻图片">
-                        </a>
-                    </div>
-                    <div class="content-right">
-                        <p><a href="" target="_blank"></a></p>
-                        <p></p>
-                        <p></p>
-                        <span>难度</span>
-                        <i></i>
-                        <span>词汇量</span>
-                        <i></i>
-                    </div>`
-                $(".new-list").append(newLi);
-                // 再填充
-                // 修改超链接地址
-                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:first a").attr("href", articleData[k].original_url);
-                $(".new-list li:nth-child(" + (k + 1) + ") .left-img a").attr("href", articleData[k].original_url);
-                // 填充标题，发布时间，文本内容，难度，词汇量等信息
-                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:first a").append(articleData[k].title_en);
-                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:nth-child(2)").append(articleData[k].date);
-                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:nth-child(3)").append(articleData[k].summary);
-                $(".new-list li:nth-child(" + (k + 1) + ") .content-right i:first").append(articleData[k].grade_info);
-                $(".new-list li:nth-child(" + (k + 1) + ") .content-right i:last").append(articleData[k].length);
-            }
+        // 显示数据
+        for (let m = 6; m<11;m++) {
+            $(".new-list li:nth-child("+m+")").css("display", "block");
         }
-    })
+        
+    });
 </script>
 
 </html>
