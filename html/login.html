@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扇贝登录</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- jquery.js -->
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 这里引入外部文件的字体图标样式 -->
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <style type="text/css">
+        header {
+            height: 60px;
+            background-color: #209E85;
+            line-height: 60px;
+        }
+
+        header img {
+            width: 130px;
+        }
+
+        header li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 0 25px 0 25px;
+        }
+
+        .header-right {
+            margin-left: 800px;
+            background-color: transparent;
+            color: #F3F6F6;
+            border: none;
+        }
+
+        .header-right:hover {
+            background-color: transparent;
+        }
+
+        .header-right:active {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        header li a {
+            font-size: large;
+            color: #F3F6F6;
+        }
+
+        #login {
+            width: 800px;
+            height: 600px;
+            margin: 60px auto 0;
+            position: relative;
+        }
+
+        .login-left {
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            overflow: hidden;
+            margin-right: 0;
+        }
+
+        .iconfont {
+            float: left;
+            font-size: 23px;
+        }
+
+        .form-row {
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        form h3 {
+            width: 400px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register {
+            display: inline-block;
+            padding-left: 10px;
+            margin-top: 10px;
+        }
+
+        .forget-pawd {
+            display: inline-block;
+            margin-left: 210px;
+            margin-top: 10px;
+        }
+
+        .login-in {
+            width: 400px;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .login-in button {
+            display: inline-block;
+            width: 350px;
+        }
+
+        .erro-msg {
+            padding-left: 20px;
+            color: tomato;
+            display: none;
+            transition: all 1.5s linear 0s;
+        }
+
+        .divider {
+            width: 400px;
+            height: 60px;
+            position: relative;
+            vertical-align: middle;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .divider hr {
+            width: 40%;
+            display: inline-block;
+            margin: 30px 0;
+        }
+
+        .divider :nth-child(3) {
+            display: inline-block;
+            position: absolute;
+            left: 230px;
+        }
+
+        .divider span {
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            position: absolute;
+            top: 16px;
+            color: #99A6C4;
+        }
+
+        .third-part li {
+            list-style-type: none;
+            display: inline-block;
+        }
+
+        .third-part li .part-box {
+            width: 80px;
+            height: 80px;
+            text-align: center;
+        }
+
+        .part-box .iconfont {
+            font-size: 40px;
+            display: inline-block;
+            padding-left: 20px;
+        }
+
+        .part-box .iconfont a:hover,
+        .part-box .iconfont a:link {
+            text-decoration: none;
+        }
+
+        .qq:hover {
+            color: #DE1400;
+        }
+
+        .vx:hover {
+            color: #7EE50A;
+        }
+
+        .wb:hover {
+            color: #F45016;
+        }
+
+        .part-box {
+            margin-right: 25px;
+        }
+
+        .part-box p {
+            clear: both;
+        }
+
+        .login-right {
+            position: absolute;
+            left: 400px;
+            width: 400px;
+            height: 500px;
+        }
+
+        .login-right .show-img {
+            position: absolute;
+            left: 75px;
+            top: 90px;
+            width: 250px;
+            height: 310px;
+            overflow: hidden;
+        }
+
+        .login-right .all-img img {
+            width: 250px;
+            height: 250px;
+        }
+
+        .login-right .all-img {
+            width: 250px;
+            height: 930px;
+        }
+
+        .all-img p {
+            height: 20px;
+            text-align: center;
+            color: #979797;
+        }
+
+        /* 定义一个css3动画，实现图片从下往上的轮播效果 */
+        @keyframes up-carousel {
+            0% {
+                transform: translateY(0);
+            }
+
+            25% {
+                transform: translateY(-310px);
+            }
+
+            50% {
+                transform: translateY(-620px);
+            }
+
+            75% {
+                transform: translateY(-310px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部部分 -->
+    <header>
+        <ul>
+            <li>
+                <a href="./header.html"><img src="../src/logo_blank.png" alt="扇贝英语"></a>
+            </li>
+            <li><a href="#">单词</a></li>
+            <li><a href="./read.html" target="_blank">阅读</a></li>
+            <li><a href="#">口语</a></li>
+            <li><a href="#">听力</a></li>
+            <li class="header-right btn btn-default">下载APP</li>
+        </ul>
+    </header>
+    <!-- 登录内容部分 -->
+    <div id="login">
+        <!-- 左边登录部分 -->
+        <div class="login-left">
+            <form action="#">
+                <h3>欢迎开启扇贝英语学习之旅</h3>
+                <div class="form-row">
+                    <i class="iconfont">&#xe66b;</i>
+                    <div class="col-sm-11">
+                        <input id="user-num" class="form-control" type="text" autofocus required
+                            placeholder="电话号码/邮箱/账号">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <i class="iconfont">&#xe65e;</i>
+                    <div class="col-sm-11">
+                        <input id="user-pawd" class="form-control" type="password" required placeholder="密码">
+                    </div>
+                </div>
+                <a href="./register.html" target="_blank" class="register">没有账号？<span>注册</span></a>
+                <a href="#" class="forget-pawd">忘记密码</a>
+                <div class="login-in">
+                    <button type="submit" class="submit btn btn-info">登录</button>
+                </div>
+                <p class="erro-msg">账号或密码错误</p>
+            </form>
+            <div class="divider">
+                <hr>
+                <span>第三方登录</span>
+                <hr>
+            </div>
+            <div class="third-part">
+                <ul>
+                    <li>
+                        <div class="part-box">
+                            <i class="iconfont"><a href="#" class="qq">&#xe613;</a></i>
+                            <p>腾讯QQ</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="part-box">
+                            <i class="iconfont"><a href="#" class="vx">&#xe614;</a></i>
+                            <p>微信</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="part-box">
+                            <i class="iconfont"><a href="#" class="wb">&#xe645;</a></i>
+                            <p>微博</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 右边介绍部分，用css3做一个从下到上动画轮播 -->
+        <div class="login-right">
+            <div class="show-img">
+                <div class="all-img">
+                    <img src="../src/login-right1.png" alt="扇贝社区">
+                    <p>几千人同时在线的扇贝社区</p>
+                    <p>快来扇贝社区分享吧</p>
+                    <img src="../src/login-right2.png" alt="打卡学习">
+                    <p>及时学习及时打卡</p>
+                    <p>为每天的学习汗水留下记录</p>
+                    <img src="../src/login-right3.png" alt="扇贝课堂">
+                    <p>扇贝在线授课</p>
+                    <p>不懂的知识点及时攻破</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    // 在页面加载完后，从下到上的轮播动画开始运行
+    $(".all-img").css("animation", "up-carousel 12s ease-in-out 2s infinite");
+    // 对输入的密码进行正确性的判断
+    // 当输入内容为空的时候，不能点击登录键
+    if ($("#user-num").val() == "" || $("#user-pawd").val() == "") {
+        $(".submit").addClass("disabled");
+    }
+    // 应该添加一个事件监听，当输入内容发生变化的时候，就判断内容是否为空，不为空则可以点击登录按钮
+
+    $(".submit").on("click", function () {
+        // 账号和密码不正确则显示错误信息提示
+        if ($("#user-num").val() != "123456" && $("#user-pawd").val() != "123456") {
+            $(".erro-msg").css("display", "block");
+        }
+    });
+</script>
+
+</html>

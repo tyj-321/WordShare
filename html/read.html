@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扇贝阅读</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- jquery.js -->
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 这里引入外部文件的字体图标样式 -->
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <style type="text/css">
+        header {
+            height: 60px;
+            background-color: #209E85;
+            line-height: 60px;
+        }
+
+        header img {
+            width: 130px;
+        }
+
+        header li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 0 25px 0 25px;
+        }
+
+        .header-right {
+            margin-left: 800px;
+            background-color: transparent;
+            color: #F3F6F6;
+            border: none;
+        }
+
+        .header-right:hover {
+            background-color: transparent;
+        }
+
+        .header-right li:active {
+            border: none;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        header li a {
+            font-size: large;
+            color: #F3F6F6;
+        }
+
+        #new {
+            position: relative;
+            width: 1300px;
+            margin: 10px auto 0;
+        }
+
+        .new-article {
+            width: 800px;
+        }
+
+        .new-article {
+            display: inline-block;
+        }
+
+        .new-article h4 {
+            display: inline-block;
+            margin-left: 90px;
+        }
+
+        .new-article hr {
+            width: 600px;
+            margin-left: 90px;
+        }
+
+        .new-article li {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+
+        .left-img {
+            display: inline-block;
+            vertical-align: bottom;
+            margin-right: 5px;
+        }
+
+        .left-img img {
+            width: 180px;
+            height: 130px;
+        }
+
+        .content-right {
+            width: 500px;
+            height: 130px;
+            display: inline-block;
+        }
+
+        .content-right :nth-child(1) {
+            color: #000000;
+            font-size: 16px;
+            font-family: PingFangSC-Medium;
+            margin-bottom: 1px;
+        }
+
+        .content-right :nth-child(2) {
+            color: #99B4D6;
+            margin-bottom: 2px;
+        }
+
+        .content-right :nth-child(3) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            height: 60px;
+            color: #999999;
+        }
+
+        .content-right :nth-child(4),
+        .content-right :nth-child(5),
+        .content-right :nth-child(6),
+        .content-right :nth-child(7) {
+            display: inline-block;
+            position: relative;
+            left: 350px;
+            margin-left: 2px;
+        }
+
+        .new-hot {
+            position: absolute;
+            left: 830px;
+            top: 10px;
+        }
+
+        .new-hot .all-new {
+            margin-top: 20px;
+        }
+
+        .new-hot span {
+            display: inline-block;
+            color: #41B69F;
+            vertical-align: baseline;
+        }
+
+        .new-hot h5 {
+            display: inline-block;
+        }
+
+        .new-hot li {
+            list-style-type: none;
+            height: 70px;
+            width: 350px;
+            border-top: 1px solid #eee;
+        }
+
+        .hot-list :last-child {
+            border-bottom: 1px solid #eee;
+        }
+
+        .new-hot li :nth-child(1) {
+            height: 40px;
+            margin-bottom: 2px;
+            color: #000000;
+        }
+
+        .new-hot li :nth-child(1) a {
+            border-bottom: none;
+        }
+
+        .new-hot li :nth-child(2) {
+            font-size: 10px;
+            margin-bottom: 1px;
+            display: inline-block;
+        }
+
+        .new-hot li :nth-child(3) {
+            display: inline-block;
+            margin-left: 180px;
+            border-bottom: none;
+        }
+
+        .app-download {
+            margin: 50px 0 20px 30px;
+            border-bottom: 5px solid #28BEA0;
+            position: relative;
+        }
+
+
+        .app-erweima {
+            display: inline-block;
+        }
+
+        .app-erweima img {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+
+        .app-info {
+            display: inline-block;
+            position: absolute;
+            top: 4px;
+        }
+
+        .app-info p {
+            margin-left: 10px;
+        }
+
+        .app-info :nth-child(3) {
+            color: #89AF7D;
+        }
+
+        .load-more {
+            width: 200px;
+            position: relative;
+            left: 300px;
+            border-radius: 20px;
+        }
+
+        .load-more:active {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部部分 -->
+    <header>
+        <ul>
+            <li>
+                <a href="./header.html"><img src="../src/logo_blank.png" alt="扇贝英语"></a>
+            </li>
+            <li><a href="#">单词</a></li>
+            <li><a href="./read.html">阅读</a></li>
+            <li><a href="#">口语</a></li>
+            <li><a href="#">听力</a></li>
+            <li class="header-right btn btn-default">下载APP</li>
+        </ul>
+    </header>
+    <!-- 新闻短文主题部分 -->
+    <div id="new">
+        <!-- 新闻短文 -->
+        <div class="new-article">
+            <h4>热点新闻</h4>
+            <hr>
+            <ul class="new-list">
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new0.jpg" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new1.png" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new2.png" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new3.png" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new4.jpg" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度:</span>
+                        <i></i>
+                        <span>词汇量:</span>
+                        <i></i>
+                    </div>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-success load-more">Load More</button>
+        </div>
+        <!-- 热门文章 -->
+        <div class="new-hot">
+            <span>|</span>
+            <h5>关注最多的短文</h5>
+            <div class="all-new">
+                <ul class="hot-list">
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                    <li>
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <span class="iconfont">&#xe615;</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- 手机APP下载 -->
+            <div class="app-download">
+                <div class="app-erweima">
+                    <img src="../src/app.png" alt="app下载二维码">
+                </div>
+                <div class="app-info">
+                    <p>下载扇贝APP</p>
+                    <p>随时随地学习英语</p>
+                    <p>扫描左边的二维码下载APP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    // 通过原生jsonp访问到本地的所有英语文章的json数据
+    var script = document.createElement("script");
+    script.id = "sc";
+    script.src = "../js/article.js";
+    document.body.appendChild(script);
+    // 通过原生jsonp访问到本地的所有热门关注新闻文章的json数据
+    var script = document.createElement("script");
+    script.id = "sc";
+    script.src = "../js/news.js";
+    document.body.appendChild(script);
+
+    // 获取到左边文章的函数 并进行内容填充
+    function getArticleData(resp) {
+        console.log(resp);
+        const articleData = resp.data.objects;
+        // 获取到数据就把数据填充进对应的DOM元素中 只获取前5条，后面需要再加载
+        for (let i = 0; i < 5; i++) {
+            // 修改超链接地址
+            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:first a").attr("href", articleData[i].original_url);
+            $(".new-list li:nth-child(" + (i + 1) + ") .left-img a").attr("href", articleData[i].original_url);
+            // 填充标题，发布时间，文本内容，难度，词汇量等信息
+            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:first a").append(articleData[i].title_en);
+            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:nth-child(2)").append(articleData[i].date);
+            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:nth-child(3)").append(articleData[i].summary);
+            $(".new-list li:nth-child(" + (i + 1) + ") .content-right i:first").append(articleData[i].grade_info);
+            $(".new-list li:nth-child(" + (i + 1) + ") .content-right i:last").append(articleData[i].length);
+        }
+    }
+
+    // 获取到右边热门新闻文章的函数 
+    function getNewData(resp) {
+        console.log(resp);
+        const newData = resp.data.objects;
+        // 获取到了最受关注短文的数据，填充进对应的DOM元素中
+        for (let j = 0; j < 8; j++) {
+            // 修改超链接地址
+            $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(1) a").attr("href", newData[j].original_url);
+            // 把标题、时间、关注度填充进DOM
+            $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(1) a").append(newData[j].title_en);
+            $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(2)").append(newData[j].date);
+            $(".hot-list li:nth-child(" + (j + 1) + ") span").append(newData[j].num_reviews);
+        }
+    }
+    function getMoreData(resp) {
+        console.log(resp);
+    }  //我也不知道为什么要在这里先申明，否则请求不到数据
+
+    // 给加载更多按钮添加点击事件
+    // 把按钮消失，创建列表元素，然后请求数据，再填充数据
+    $(".load-more").bind("click", () => {
+        // 按钮消失
+        $(".load-more").css("display", "none");
+        var script = document.createElement("script");
+        script.id = "sc";
+        script.src = "../js/more.js";
+        document.body.appendChild(script);
+        function getMoreData(resp) {
+            console.log(resp);
+            for (let k = 5; k < 10; k++) {
+                // 得先有元素，估计要一个一个添加节点了，我丢，
+                const newLi = `<div class="left-img">
+                        <a href="" target="_blank">
+                            <img src="../src/new4.jpg" alt="新闻图片">
+                        </a>
+                    </div>
+                    <div class="content-right">
+                        <p><a href="" target="_blank"></a></p>
+                        <p></p>
+                        <p></p>
+                        <span>难度</span>
+                        <i></i>
+                        <span>词汇量</span>
+                        <i></i>
+                    </div>`
+                $(".new-list").append(newLi);
+                // 再填充
+                // 修改超链接地址
+                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:first a").attr("href", articleData[k].original_url);
+                $(".new-list li:nth-child(" + (k + 1) + ") .left-img a").attr("href", articleData[k].original_url);
+                // 填充标题，发布时间，文本内容，难度，词汇量等信息
+                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:first a").append(articleData[k].title_en);
+                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:nth-child(2)").append(articleData[k].date);
+                $(".new-list li:nth-child(" + (k + 1) + ") .content-right p:nth-child(3)").append(articleData[k].summary);
+                $(".new-list li:nth-child(" + (k + 1) + ") .content-right i:first").append(articleData[k].grade_info);
+                $(".new-list li:nth-child(" + (k + 1) + ") .content-right i:last").append(articleData[k].length);
+            }
+        }
+    })
+</script>
+
+</html>

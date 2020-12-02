@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词分享网站</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- jquery.js -->
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <style type="text/css">
+        #container {
+            padding: 0 150px 0 150px;
+        }
+
+        #page-head #login-register span {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        #page-head #login-register {
+            margin: 10px 20px 0 5px;
+        }
+
+        #logo img {
+            width: 130px;
+            margin: 20px 0 20px 0;
+        }
+
+        #logo {
+            text-align: center;
+        }
+
+        #carousel-box {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .tab-content .carousel-inner img {
+            width: 100%;
+        }
+
+        .carousel-inner .carousel-caption {
+            position: absolute;
+            left: -250px;
+            top: 150px;
+        }
+
+        .carousel-inner .carousel-caption h4 {
+            color: black;
+            font-size: 40px;
+        }
+
+        .carousel-inner .carousel-caption p {
+            color: black;
+            font-size: medium;
+        }
+
+        .carousel-inner .carousel-caption a {
+            border: none;
+            margin-top: 20px;
+            background-color: transparent;
+        }
+
+        .carousel-inner .carousel-caption a:active {
+            border: none;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        #word-test,
+        #program,
+        #public {
+            height: 200px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        #word-test-left {
+            position: relative;
+        }
+
+        #word-test-left :nth-child(1) {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+        }
+
+        #word-test-left :nth-child(2) {
+            position: absolute;
+            left: 40px;
+            top: 15px;
+            width: 90px;
+            height: 90px;
+            /* 过渡动画 */
+            transition: all 0.5s linear;
+        }
+
+        #word-test-left :nth-child(2):hover {
+            top: 12px;
+        }
+
+        #program-right {
+            position: relative;
+        }
+
+        #program-right :nth-child(1) {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+        }
+
+        #program-right :nth-child(2) {
+            position: absolute;
+            left: 40px;
+            top: 20px;
+            width: 90px;
+            width: 90px;
+            /* 过渡动画 */
+            transition: all 0.5s linear;
+        }
+
+        #program-right :nth-child(2):hover {
+            top: 17px;
+        }
+
+        #public-left {
+            position: relative;
+        }
+
+        #public-left :nth-child(1) {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+        }
+
+        #public-left :nth-child(2) {
+            position: absolute;
+            left: 38px;
+            top: 30px;
+            width: 70px;
+            height: 30px;
+            /* 过渡动画 */
+            transition: all 0.5s linear;
+        }
+
+        #public-left :nth-child(2):hover {
+            top: 27px;
+        }
+
+        /* 在这里定义一个旋转的动画 */
+        @keyframes revolve {
+            0% {
+                transform: rotate(0deg);
+                background-color: orange;
+            }
+
+            25% {
+                transform: rotate(-180deg);
+            }
+
+            50% {
+                transform: rotate(-270deg);
+            }
+
+            100% {
+                transform: rotate(-360deg);
+                background-color: orangered;
+            }
+        }
+
+        #word-test-right .icon,
+        #program-left .icon,
+        #public-right .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+            margin-right: 10px;
+            border-radius: 10%;
+            transform: rotate(0deg);
+        }
+
+        footer {
+            margin-top: 20px;
+            height: 300px;
+            width: 100%;
+            background-color: #283044;
+            color: #D0D2D6;
+        }
+
+        footer li {
+            margin-top: 5px;
+            list-style-type: none;
+        }
+
+        footer hr {
+            width: 70%;
+        }
+
+        .foot-right p {
+            font-size: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="page-head">
+            <!-- 登录和注册部分 -->
+            <div id="login-register" class="pull-right">
+                <a href="./login.html" target="_blank" id="login">登录</a>
+                <span>|</span>
+                <a href="./register.html" target="_blank" id="register">注册</a>
+            </div>
+            <div id="logo"><img src="../src/logo.png" alt="扇贝单词logo"></div>
+            <!-- 导航栏 -->
+            <div id="menu" class="navbar navbar-default">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">首页</a></li>
+                    <li><a href="#tab2" data-toggle="tab">扇贝社区</a></li>
+                    <li><a href="#tab3" data-toggle="tab">打卡学习</a></li>
+                    <li><a href="#tab4" data-toggle="tab">下载APP</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <!-- 添加一个广告轮播图 -->
+                        <div id="carousel-box" class="carousel slide" data-ride="carousel">
+                            <!-- 标识 -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-box" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-box" data-slide-to="1"></li>
+                                <li data-target="#carousel-box" data-slide-to="2"></li>
+                                <li data-target="#carousel-box" data-slide-to="3"></li>
+                            </ol>
+                            <!-- 幻灯片 -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <a href="#" target="_blank"><img src="../src/word.png" alt="扇贝单词"></a>
+                                    <div class="carousel-caption">
+                                        <h4>扇贝单词</h4>
+                                        <p>
+                                            海量词汇，派生词<br>
+                                            权威英语词典<br>
+                                            启发式提示抗遗忘<br>
+                                            再也不怕记不住单词啦<br>
+                                        </p>
+                                        <a href="#" class="btn btn-default">下载APP</a>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <a href="#" target="_blank"><img src="../src/listen.png" alt="扇贝听力"></a>
+                                    <div class="carousel-caption">
+                                        <h4>扇贝听力</h4>
+                                        <p>
+                                            一句一句地听<br>
+                                            没听清，刮开刮刮卡提示<br>
+                                            写不出，提示来帮忙<br>
+                                            就没有听不懂的听力<br>
+                                        </p>
+                                        <a href="#" class="btn btn-default">下载APP</a>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <a href="#" target="_blank"><img src="../src/speak.jpg" alt="扇贝口语"></a>
+                                    <div class="carousel-caption">
+                                        <h4>扇贝口语</h4>
+                                        <p>
+                                            地道美语，带你玩遍世界<br>
+                                            丰富的日常口语场景<br>
+                                            帮你解决开口难的问题<br>
+                                            用英语扩充你的表达欲<br>
+                                        </p>
+                                        <a href="#" class="btn btn-default">下载APP</a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <a href="./read.html" target="_blank"><img src="../src/read.png" alt="扇贝阅读"></a>
+                                    <div class="carousel-caption">
+                                        <h4>扇贝阅读</h4>
+                                        <p>
+                                            摘选优质英语短文<br>
+                                            一边学英语，一边看书<br>
+                                            广阔的阅读量帮你读懂人生<br>
+                                            让你用英语的眼光观察世界<br>
+                                        </p>
+                                        <a href="#" class="btn btn-default">下载APP</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 控制按钮 -->
+                            <a href="#carousel-box" class="left carousel-control" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a href="#carousel-box" class="right carousel-control" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                        <!-- 一些基本元素 -->
+                        <div class="container">
+                            <div class="row">
+                                <!-- 词汇量测试 -->
+                                <div id="word-test">
+                                    <div class="col-lg-3 visible-lg"></div>
+                                    <div id="word-test-left" class="col-lg-3 col-sm-12">
+                                        <img src="../src/word-test.png" alt="词汇量测试">
+                                        <img src="../src/word-test1.png" alt="词汇量测试1">
+                                    </div>
+                                    <div class="col-lg-1 visible-lg"></div>
+                                    <div id="word-test-right" class="col-lg-5 col-sm-12">
+                                        <h2><span class="icon"></span>词汇量测试</h2>
+                                        <p>
+                                            敢测一测自己的词汇量吗<br>
+                                            赶紧来试一试吧
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- 单词编程 -->
+                                <div id="program">
+                                    <div class="col-lg-3 visible-lg"></div>
+                                    <div id="program-left" class="col-lg-3 col-sm-12">
+                                        <h2><span class="icon"></span>单词编程</h2>
+                                        <p>
+                                            边学边练的上机实验<br>
+                                            及时巩固知识
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-1 visible-lg"></div>
+                                    <div id="program-right" class="col-lg-5 col-sm-12">
+                                        <img src="../src/program.png" alt="单词编程">
+                                        <img src="../src/program1.png" alt="单词编程1">
+                                    </div>
+                                </div>
+                                <!-- 扇贝社区 -->
+                                <div id="public">
+                                    <div class="col-lg-3 visible-lg"></div>
+                                    <div id="public-left" class="col-lg-3 col-sm-12">
+                                        <img src="../src/public.png" alt="扇贝社区">
+                                        <img src="../src/public1.png" alt="扇贝社区1">
+                                    </div>
+                                    <div class="col-lg-1 visible-lg"></div>
+                                    <div id="public-right" class="col-lg-5 col-sm-12">
+                                        <h2><span class="icon"></span>扇贝社区</h2>
+                                        <p>
+                                            有什么想法和idea<br>
+                                            让大家看到你的发言吧
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 网站末尾 -->
+                        <footer>
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-10">
+                                    <div class="col-lg-4">
+                                        <ul>
+                                            <h3>如何使用</h3>
+                                            <li>面向开发者</li>
+                                            <li>帮助</li>
+                                            <li>论坛</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <ul>
+                                            <h3>关于我们</h3>
+                                            <li>加入我们</li>
+                                            <li>友情链接</li>
+                                            <li>关注我们</li>
+                                            <li>青年领导力计划</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <ul>
+                                            <h3>合作伙伴</h3>
+                                            <li>新浪微博</li>
+                                            <li>腾讯qq</li>
+                                            <li>企业微信</li>
+                                            <li>书林出版社</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="foot-right">
+                                <p>本网站纯属虚构，版权说明归马饼儿所有</p>
+                                <p>Copyright © 2019-2020 版权所有：成都新都区达广科技有限公司</p>
+                                <p>川ICP备12138号-3 公安备案号：2879737484733</p>
+                            </div>
+                        </footer>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        扇贝社区
+
+                    </div>
+                    <div class="tab-pane" id="tab3">打卡学习</div>
+                    <div class="tab-pane" id="tab4">下载APP</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    // 在页面加载完后，小图标的旋转动画开始运行
+    $(".icon").css("animation", "revolve 3s linear 0s infinite");
+</script>
+
+</html>
