@@ -14,6 +14,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+    <!-- 引入md5.js -->
+    <script src="../js/md5.js"></script>
     <!-- 这里引入外部文件的字体图标样式 -->
     <link rel="stylesheet" href="../css/iconfont.css" />
     <style type="text/css">
@@ -34,7 +36,7 @@
         }
 
         .header-right {
-            margin-left: 800px;
+            margin-left: 400px;
             background-color: transparent;
             color: #F3F6F6;
             border: none;
@@ -53,6 +55,27 @@
         header li a {
             font-size: large;
             color: #F3F6F6;
+        }
+
+        header .input-word {
+            display: inline-block;
+        }
+
+        header .glyphicon-remove,
+        header .glyphicon-search {
+            width: 30px;
+            height: 30px;
+        }
+
+        header .download-erweima {
+            z-index: 11;
+            position: relative;
+            left: 1360px;
+            top: 10px;
+            display: none;
+            width: 130px;
+            height: 130px;
+            transition: all 0.5s ease-in 0s;
         }
 
         #new {
@@ -236,6 +259,24 @@
         .load-more:active {
             border: none;
         }
+
+        .arrowhead {
+            width: 50px;
+            height: 45px;
+        }
+
+        .upToTop {
+            z-index: 10;
+            position: fixed;
+            left: 1000px;
+            top: 600px;
+            width: 50px;
+            height: 80px;
+            color: cornflowerblue;
+            font-size: 16px;
+            display: none;
+            cursor:pointer;
+        }
     </style>
 </head>
 
@@ -250,8 +291,33 @@
             <li><a href="./read.html">阅读</a></li>
             <li><a href="#">口语</a></li>
             <li><a href="#">听力</a></li>
+            <li>
+                <div class="input-word"><input id="query-word" class="form-control" type="text" placeholder="查单词或短语"
+                        required></div>
+                <i class="glyphicon glyphicon-remove"></i>
+                <a href="#resault-modal" data-toggle="modal"><i class="glyphicon glyphicon-search"></i></a>
+            </li>
             <li class="header-right btn btn-default">下载APP</li>
         </ul>
+        <div class="download-erweima">
+            <img src="../src/app.png" alt="手机下载二维码">
+        </div>
+        <div id="resault-modal" class="query-word-resalut modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i></button>
+                        <h3></h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>翻译结果：</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
     <!-- 新闻短文主题部分 -->
     <div id="new">
@@ -483,9 +549,22 @@
                 </div>
             </div>
         </div>
+        <!-- 设置一个回到顶部的按钮 -->
+        <div class="upToTop">
+            <canvas class="arrowhead"></canvas>
+            <p>To Top</p>
+        </div>
     </div>
 </body>
 <script type="text/javascript">
+    // 给下载APP那个按钮设置一个监听事件，当鼠标悬浮时，把二维码显示出来，移出就隐藏
+    $(".header-right").bind("mouseover", function () {
+        $(".download-erweima").css("display", "inline-block");
+    });
+    $(".header-right").bind("mouseout", function () {
+        $(".download-erweima").css("display", "none");
+    });
+
     // 通过原生jsonp访问到本地的所有英语文章的json数据
     var script = document.createElement("script");
     script.id = "sc";
@@ -499,7 +578,6 @@
 
     // 获取到左边文章的函数 并进行内容填充
     function getArticleData(resp) {
-        console.log(resp);
         const articleData = resp.data.objects;
         // 获取到数据就把数据填充进对应的DOM元素中 只获取前5条，后面需要再加载
         for (let i = 0; i < 10; i++) {
@@ -517,7 +595,6 @@
 
     // 获取到右边热门新闻文章的函数 
     function getNewData(resp) {
-        console.log(resp);
         const newData = resp.data.objects;
         // 获取到了最受关注短文的数据，填充进对应的DOM元素中
         for (let j = 0; j < 8; j++) {
@@ -536,10 +613,83 @@
         // 按钮消失
         $(".load-more").css("display", "none");
         // 显示数据
-        for (let m = 6; m<11;m++) {
-            $(".new-list li:nth-child("+m+")").css("display", "block");
+        for (let m = 6; m < 11; m++) {
+            $(".new-list li:nth-child(" + m + ")").css("display", "block");
         }
-        
+    });
+</script>
+<script type="text/javascript">
+    // 用canvas画布画出一个向上的箭头
+    let cnv = $(".arrowhead");
+    let cxt = cnv[0].getContext("2d");
+    cxt.moveTo(125, 0);
+    cxt.lineTo(225, 75);
+    cxt.lineTo(175, 75);
+    cxt.lineTo(175, 125);
+    cxt.lineTo(75, 125);
+    cxt.lineTo(75, 75);
+    cxt.lineTo(25, 75);
+    cxt.lineTo(125, 0);
+    cxt.lineWidth = 10;
+    cxt.strokeStyle = "#56CBB3";
+    cxt.stroke();
+
+    $(window).bind("scroll", function () {
+        // 当滚动条大于300的时候就把置顶显示出来
+        if ($(window).scrollTop() > 300) {
+            $(".upToTop").css("display", "block");
+        }
+        // 当滚动条小于300的时候就把置定隐藏起来
+        if ($(window).scrollTop() < 300) {
+            $(".upToTop").css("display", "none");
+        }
+    });
+    // 给置顶添加一个点击事件，返回顶部
+    $(".upToTop").bind("click", function () {
+        $(window).scrollTop(0);
+    });
+</script>
+<script type="text/javascript">
+    // 查询键添加监听事件，点击就查询
+    $(".glyphicon-search").bind("click", function () {
+        let query = $("#query-word").val();
+        if (query == "") {
+            $("#resault-modal .modal-header h3").html("输入内容为空，你要我查个寂寞啊！");
+            $("#resault-modal .modal-body p").html("");
+        }
+        else {
+            let salt = (new Date).getTime();
+            let str1 = "20201203000635963" + query + + salt + "vOs4_KnKcrzkK7D4PYZe";
+            let sign = MD5(str1);
+            $("#resault-modal .modal-header h3").html("");
+            $("#resault-modal .modal-body p").html("翻译结果：");
+            // 调用百度翻译API进行翻译
+            $.ajax({
+                type: "get",
+                url: "https://fanyi-api.baidu.com/api/trans/vip/translate",
+                dataType: "jsonp",
+                data: {
+                    q: query,
+                    from: "en",
+                    to: "zh",
+                    appid: "20201203000635963",
+                    salt: salt,
+                    sign: sign,
+                },
+                success: function (data) {
+                    // 成功了就把获得的数据结果填充进对应的元素
+                    $("#resault-modal .modal-header h3").append($("#query-word").val());
+                    $("#resault-modal .modal-body p").append(data.trans_result[0].dst);
+                },
+                error: function (err) {
+                    console.log("Error:" + err.status);
+                }
+            });
+        }
+    });
+    // 删除按钮添加监听事件，点击就把输入的内容清空
+    $(".glyphicon-remove").bind("click", function () {
+        $("#query-word").val("");
     });
 </script>
 
