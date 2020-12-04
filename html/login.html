@@ -55,6 +55,17 @@
             color: #F3F6F6;
         }
 
+        header .download-erweima {
+            z-index: 11;
+            position: relative;
+            left: 1360px;
+            top: 10px;
+            display: none;
+            width: 130px;
+            height: 130px;
+            transition: all 0.5s ease-in 0s;
+        }
+
         #login {
             width: 800px;
             height: 600px;
@@ -104,7 +115,7 @@
             margin-top: 20px;
         }
 
-        .login-in button {
+        .login-in .submit {
             display: inline-block;
             width: 350px;
         }
@@ -258,6 +269,9 @@
             <li><a href="#">听力</a></li>
             <li class="header-right btn btn-default">下载APP</li>
         </ul>
+        <div class="download-erweima">
+            <img src="../src/app.png" alt="手机下载二维码">
+        </div>
     </header>
     <!-- 登录内容部分 -->
     <div id="login">
@@ -281,7 +295,7 @@
                 <a href="./register.html" target="_blank" class="register">没有账号？<span>注册</span></a>
                 <a href="#" class="forget-pawd">忘记密码</a>
                 <div class="login-in">
-                    <button type="submit" class="submit btn btn-info">登录</button>
+                    <a class="submit btn btn-info" href="#">登录</a>
                 </div>
                 <p class="erro-msg">账号或密码错误</p>
             </form>
@@ -332,21 +346,57 @@
     </div>
 </body>
 <script type="text/javascript">
+    // 给下载APP那个按钮设置一个监听事件，当鼠标悬浮时，把二维码显示出来，移出就隐藏
+    $(".header-right").bind("mouseover", function () {
+        $(".download-erweima").css("display", "inline-block");
+    });
+    $(".header-right").bind("mouseout", function () {
+        $(".download-erweima").css("display", "none");
+    });
+    
     // 在页面加载完后，从下到上的轮播动画开始运行
     $(".all-img").css("animation", "up-carousel 12s ease-in-out 2s infinite");
-    // 对输入的密码进行正确性的判断
-    // 当输入内容为空的时候，不能点击登录键
-    if ($("#user-num").val() == "" || $("#user-pawd").val() == "") {
-        $(".submit").addClass("disabled");
-    }
-    // 应该添加一个事件监听，当输入内容发生变化的时候，就判断内容是否为空，不为空则可以点击登录按钮
-
-    $(".submit").on("click", function () {
+    // // 对输入的密码进行正确性的判断
+    function check() {
+        // 输入框添加一个事件监听，当输入内容发生变化的时候，就判断内容是否为空，不为空则可以点击登录按钮
+        $("#user-num").bind("keyup", function () {
+            // 当输入内容为空的时候，不能点击登录键
+            var userNum = $("#user-num").val();
+            var userPawd = $("#user-pawd").val();
+            if (userNum == "" || userPawd == "") {
+                $(".submit").addClass("disabled");
+                $(".submit").attr("disabled", "disabled");
+            }
+            else {
+                $(".submit").removeClass("disabled");
+                $(".submit").removeAttr("disabled");
+            }
+        });
+        $("#user-pawd").bind("keyup", function () {
+            // 当输入内容为空的时候，不能点击登录键
+            var userNum = $("#user-num").val();
+            var userPawd = $("#user-pawd").val();
+            if (userPawd == "" || userNum == "") {
+                $(".submit").addClass("disabled");
+                $(".submit").attr("disabled", "disabled");
+            }
+            else {
+                $(".submit").removeClass("disabled");
+                $(".submit").removeAttr("disabled");
+            }
+        });
         // 账号和密码不正确则显示错误信息提示
-        if ($("#user-num").val() != "123456" && $("#user-pawd").val() != "123456") {
-            $(".erro-msg").css("display", "block");
-        }
-    });
+        $(".submit").bind("click", function () {
+            if ($("#user-num").val() != "123456" && $("#user-pawd").val() != "123456") {
+                $(".erro-msg").css("display", "block");
+            }
+            else if ($("#user-num").val() === "123456" && $("#user-pawd").val() === "123456") {
+                $(".submit").attr("href", "./read.html");
+            }
+        });
+    }
+    check();
+
 </script>
 
 </html>

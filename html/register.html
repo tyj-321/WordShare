@@ -55,6 +55,17 @@
             color: #F3F6F6;
         }
 
+        header .download-erweima {
+            z-index: 11;
+            position: relative;
+            left: 1360px;
+            top: 10px;
+            display: none;
+            width: 130px;
+            height: 130px;
+            transition: all 0.5s ease-in 0s;
+        }
+
         #register {
             width: 800px;
             height: 600px;
@@ -260,6 +271,9 @@
             <li><a href="#">听力</a></li>
             <li class="header-right btn btn-default">下载APP</li>
         </ul>
+        <div class="download-erweima">
+            <img src="../src/app.png" alt="手机下载二维码">
+        </div>
     </header>
     <!-- 注册内容部分 -->
     <div id="register">
@@ -270,7 +284,7 @@
                 <div class="form-row">
                     <i class="iconfont">&#xe621;</i>
                     <div class="col-sm-11">
-                        <input id="user-tellnum" class="form-control" type="text" autofocus required placeholder="手机号码">
+                        <input id="user-tellnum" class="form-control" type="tel" autofocus required placeholder="手机号码">
                     </div>
                 </div>
                 <div class="form-row">
@@ -279,11 +293,11 @@
                         <input id="user-checknum" class="form-control" type="text" required placeholder="验证码">
                     </div>
                     <div class="get-checknum">
-                        <button type="button" class="btn btn-success">获取验证码</button>
+                        <button type="button" class="get-checknum-btn btn btn-success">获取验证码</button>
                     </div>
                 </div>
                 <div class="agree">
-                    <input type="checkbox" checked class="agree-check">我已阅读并同意<a href="#">使用协议</a>
+                    <input type="checkbox" checked class="agree-check">我已阅读并同意<a href="https://www.shanbay.com/help/about/agreement/" target="_blank">使用协议</a>
                 </div>
                 <a href="./login.html" target="_blank" class="to-login">已有账号，去登录</a>
                 <div class="register-up">
@@ -337,8 +351,32 @@
     </div>
 </body>
 <script type="text/javascript">
+    // 给下载APP那个按钮设置一个监听事件，当鼠标悬浮时，把二维码显示出来，移出就隐藏
+    $(".header-right").bind("mouseover", function () {
+        $(".download-erweima").css("display", "inline-block");
+    });
+    $(".header-right").bind("mouseout", function () {
+        $(".download-erweima").css("display", "none");
+    });
+
     // 在页面加载完后，从下到上的轮播动画开始运行
     $(".all-img").css("animation", "up-carousel 12s ease-in-out 2s infinite");
+
+    // 获取验证码按钮添加监听事件，点击就需要60s后才能点击
+    $(".get-checknum-btn").bind("click", function () {
+        let i = 6;
+        $(".get-checknum-btn").addClass("disabled");
+        $(".get-checknum-btn").html("6s后重新获取");
+        let checkTimer = setInterval(() => {
+            i--;
+            $(".get-checknum-btn").html(i+"s后重新获取");
+        }, 1000);
+        setTimeout(function () {
+            $(".get-checknum-btn").removeClass("disabled");
+            $(".get-checknum-btn").html("重新获取");
+            clearInterval(checkTimer);
+        }, 6000);
+    });
 </script>
 
 </html>
