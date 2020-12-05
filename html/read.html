@@ -275,7 +275,7 @@
             color: cornflowerblue;
             font-size: 16px;
             display: none;
-            cursor:pointer;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -565,47 +565,52 @@
         $(".download-erweima").css("display", "none");
     });
 
-    // 通过原生jsonp访问到本地的所有英语文章的json数据
-    var script = document.createElement("script");
-    script.id = "sc";
-    script.src = "../js/article.js";
-    document.body.appendChild(script);
-    // 通过原生jsonp访问到本地的所有热门关注新闻文章的json数据
-    var script = document.createElement("script");
-    script.id = "sc";
-    script.src = "../js/news.js";
-    document.body.appendChild(script);
-
-    // 获取到左边文章的函数 并进行内容填充
-    function getArticleData(resp) {
-        const articleData = resp.data.objects;
-        // 获取到数据就把数据填充进对应的DOM元素中 只获取前5条，后面需要再加载
-        for (let i = 0; i < 10; i++) {
-            // 修改超链接地址
-            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:first a").attr("href", articleData[i].original_url);
-            $(".new-list li:nth-child(" + (i + 1) + ") .left-img a").attr("href", articleData[i].original_url);
-            // 填充标题，发布时间，文本内容，难度，词汇量等信息
-            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:first a").append(articleData[i].title_en);
-            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:nth-child(2)").append(articleData[i].date);
-            $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:nth-child(3)").append(articleData[i].summary);
-            $(".new-list li:nth-child(" + (i + 1) + ") .content-right i:first").append(articleData[i].grade_info);
-            $(".new-list li:nth-child(" + (i + 1) + ") .content-right i:last").append(articleData[i].length);
+    // 获取文章数据，并填充进对应DOM元素
+    $.ajax({
+        type: "get",
+        url: "../js/article.json",
+        dataType: "json",
+        success: function (resp) {
+            const articleData = resp.data.objects;
+            // 获取到数据就把数据填充进对应的DOM元素中 只获取前5条，后面需要再加载
+            for (let i = 0; i < 10; i++) {
+                // 修改超链接地址
+                $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:first a").attr("href", articleData[i].original_url);
+                $(".new-list li:nth-child(" + (i + 1) + ") .left-img a").attr("href", articleData[i].original_url);
+                // 填充标题，发布时间，文本内容，难度，词汇量等信息
+                $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:first a").append(articleData[i].title_en);
+                $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:nth-child(2)").append(articleData[i].date);
+                $(".new-list li:nth-child(" + (i + 1) + ") .content-right p:nth-child(3)").append(articleData[i].summary);
+                $(".new-list li:nth-child(" + (i + 1) + ") .content-right i:first").append(articleData[i].grade_info);
+                $(".new-list li:nth-child(" + (i + 1) + ") .content-right i:last").append(articleData[i].length);
+            }
+        },
+        error: function (err) {
+            console.log("fail" + err);
         }
-    }
+    });
 
-    // 获取到右边热门新闻文章的函数 
-    function getNewData(resp) {
-        const newData = resp.data.objects;
-        // 获取到了最受关注短文的数据，填充进对应的DOM元素中
-        for (let j = 0; j < 8; j++) {
-            // 修改超链接地址
-            $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(1) a").attr("href", newData[j].original_url);
-            // 把标题、时间、关注度填充进DOM
-            $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(1) a").append(newData[j].title_en);
-            $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(2)").append(newData[j].date);
-            $(".hot-list li:nth-child(" + (j + 1) + ") span").append(newData[j].num_reviews);
+    // 获取热门短文的数据
+    $.ajax({
+        type: "get",
+        url: "../js/news.json",
+        dataType: "json",
+        success: function (resp) {
+            const newData = resp.data.objects;
+            // 获取到了最受关注短文的数据，填充进对应的DOM元素中
+            for (let j = 0; j < 8; j++) {
+                // 修改超链接地址
+                $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(1) a").attr("href", newData[j].original_url);
+                // 把标题、时间、关注度填充进DOM
+                $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(1) a").append(newData[j].title_en);
+                $(".hot-list li:nth-child(" + (j + 1) + ") p:nth-child(2)").append(newData[j].date);
+                $(".hot-list li:nth-child(" + (j + 1) + ") span").append(newData[j].num_reviews);
+            }
+        },
+        error: function (err){
+            console.log("fail"+err);
         }
-    }
+    });
 
     // 给加载更多按钮添加点击事件
     // 把按钮消失，创建列表元素，然后请求数据，再填充数据

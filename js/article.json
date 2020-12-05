@@ -1,4 +1,4 @@
-getArticleData({
+{
     "msg": "SUCCESS",
     "data": {
         "total": 50,
@@ -368,4 +368,4 @@ getArticleData({
         ]
     },
     "status_code": 0
-})
+}

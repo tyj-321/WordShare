@@ -1,4 +1,4 @@
-getNewData({
+{
 	"data": {
 		"total": 10,
 		"ipp": 10,
@@ -327,4 +327,4 @@ getNewData({
 	},
 	"status_code": 0,
 	"msg": "SUCCESS"
-})
+}
