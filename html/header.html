@@ -335,6 +335,24 @@
             width: 100px;
             height: 60px;
         }
+
+        .arrowhead {
+            width: 50px;
+            height: 45px;
+        }
+
+        .upToTop {
+            z-index: 10;
+            position: fixed;
+            left: 1100px;
+            top: 600px;
+            width: 50px;
+            height: 80px;
+            color: cornflowerblue;
+            font-size: 16px;
+            display: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -546,7 +564,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -578,7 +596,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -610,7 +628,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -642,7 +660,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -674,7 +692,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -706,7 +724,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -738,7 +756,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -770,7 +788,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -802,7 +820,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -834,7 +852,7 @@
                                                 <span>组长:</span>
                                                 <span></span>
                                                 <span>创建时间：</span>
-                                                <span>2020-12-5</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="group-left">
@@ -863,6 +881,11 @@
                         <div class="public-right">
 
                         </div>
+                        <!-- 设置一个回到顶部的按钮 -->
+                        <div class="upToTop">
+                            <canvas class="arrowhead"></canvas>
+                            <p>To Top</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -876,20 +899,24 @@
     // 用ajax去获取本地json数据
     $.ajax({
         type: "get",
-        url: "../js/public.json",
+        url: "../json/public.json",
         dataType: "json",
         success: function (resp) {
-            // 填充对应数据
-            console.log(resp);
             const groupData = resp.objects;
             for (let i = 0; i < 10; i++) {
+                // 对时间和点击率的数据进行处理
+                let allCreatData = groupData[i].created_at;
+                let creatData = allCreatData.substring(0, 10);
+                let checkRateFloat = (groupData[i].checkin_rate * 100).toFixed(2);
+                let checkRate = checkRateFloat.toString() + "%";
+                // 把数据写进对应DOM元素
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-head h3").append(groupData[i].name);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-head span:nth-child(2)").append(groupData[i].leader.nickname);
-                // 这里需要填充时间，需要字符串的操作
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-head span:nth-child(4)").append(creatData);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-left img").attr("src", groupData[i].emblem_url);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(2)").append(groupData[i].weekly_rank);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(4)").append(groupData[i].size + "/" + groupData[i].quota);
-                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(6)").append(groupData[i].checkin_rate);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(6)").append(checkRate);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(8)").append(groupData[i].rank);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle h4").append(groupData[i].motto);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle p").append(groupData[i].description);
@@ -899,6 +926,37 @@
         error: function (err) {
             console.log("fail" + err);
         }
+    });
+
+    // 返回顶部按钮事件
+    // 用canvas画布画出一个向上的箭头
+    let cnv = $(".arrowhead");
+    let cxt = cnv[0].getContext("2d");
+    cxt.moveTo(125, 0);
+    cxt.lineTo(225, 75);
+    cxt.lineTo(175, 75);
+    cxt.lineTo(175, 125);
+    cxt.lineTo(75, 125);
+    cxt.lineTo(75, 75);
+    cxt.lineTo(25, 75);
+    cxt.lineTo(125, 0);
+    cxt.lineWidth = 10;
+    cxt.strokeStyle = "#56CBB3";
+    cxt.stroke();
+
+    $(window).bind("scroll", function () {
+        // 当滚动条大于300的时候就把置顶显示出来
+        if ($(window).scrollTop() > 300) {
+            $(".upToTop").css("display", "block");
+        }
+        // 当滚动条小于300的时候就把置定隐藏起来
+        if ($(window).scrollTop() < 300) {
+            $(".upToTop").css("display", "none");
+        }
+    });
+    // 给置顶添加一个点击事件，返回顶部
+    $(".upToTop").bind("click", function () {
+        $(window).scrollTop(0);
     });
 </script>
 

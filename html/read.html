@@ -568,7 +568,7 @@
     // 获取文章数据，并填充进对应DOM元素
     $.ajax({
         type: "get",
-        url: "../js/article.json",
+        url: "../json/article.json",
         dataType: "json",
         success: function (resp) {
             const articleData = resp.data.objects;
@@ -593,7 +593,7 @@
     // 获取热门短文的数据
     $.ajax({
         type: "get",
-        url: "../js/news.json",
+        url: "../json/news.json",
         dataType: "json",
         success: function (resp) {
             const newData = resp.data.objects;
