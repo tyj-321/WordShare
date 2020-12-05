@@ -208,6 +208,133 @@
             font-size: 5px;
             text-align: center;
         }
+
+        .public-left {
+            width: 800px;
+        }
+
+        .public-top {
+            width: 600px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .public-top-content {
+            text-align: center;
+        }
+
+        .public-top img {
+            position: relative;
+            left: 400px;
+            top: -20px;
+            width: 80px;
+            height: 100px;
+        }
+
+        .public-left .find {
+            margin: 20px 160px;
+        }
+
+        .public-left .find span {
+            display: inline-block;
+            position: relative;
+            left: 424px;
+            top: -34px;
+        }
+
+        .group-content {
+            overflow: hidden;
+        }
+
+        .group-head {
+            margin-bottom: 10px;
+            border-bottom: 1px solid lightcoral;
+        }
+
+        .group-list li {
+            list-style-type: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .group-head h3 {
+            display: inline-block;
+        }
+
+        .group-head-right {
+            position: relative;
+            top: 22px;
+            float: right;
+        }
+
+        .group-left {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: baseline;
+        }
+
+        .group-left img {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+
+        .group-middle {
+            width: 500px;
+            height: 100px;
+            display: inline-block;
+        }
+
+        .group-middle p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .group-head-right :nth-child(1),
+        .group-head-right :nth-child(3),
+        .group-middle :nth-child(1),
+        .group-middle :nth-child(3),
+        .group-middle :nth-child(5),
+        .group-middle :nth-child(7) {
+            font-size: 15px;
+        }
+
+        .group-head-right :nth-child(2),
+        .group-head-right :nth-child(4),
+        .group-middle :nth-child(2),
+        .group-middle :nth-child(4),
+        .group-middle :nth-child(6),
+        .group-middle :nth-child(8) {
+            color: #209E85;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .group-middle :nth-child(3),
+        .group-middle :nth-child(5),
+        .group-middle :nth-child(7) {
+            margin-left: 40px;
+        }
+
+        .group-middle h4 {
+            font-weight: bold;
+        }
+
+        .group-right {
+            display: inline-block;
+            vertical-align: bottom;
+        }
+
+        .group-right button {
+            width: 100px;
+            height: 60px;
+        }
     </style>
 </head>
 
@@ -226,8 +353,6 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab1" data-toggle="tab">首页</a></li>
                     <li><a href="#tab2" data-toggle="tab">扇贝社区</a></li>
-                    <li><a href="#tab3" data-toggle="tab">打卡学习</a></li>
-                    <li><a href="#tab4" data-toggle="tab">下载APP</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
@@ -400,11 +525,345 @@
                         </footer>
                     </div>
                     <div class="tab-pane" id="tab2">
-                        扇贝社区
+                        <div class="public-left row">
+                            <div class="public-top">
+                                <img src="../src/public-top.png" alt="扇贝社区">
+                                <div class="public-top-content">
+                                    <h1>扇贝社区</h1>
+                                    <p>加入小组，一起学习</p>
+                                </div>
+                            </div>
+                            <div class="col-md-7 find">
+                                <input type="text" placeholder="查询兴趣小组" class="form-control">
+                                <span href="" class="btn btn-info">查询</span>
+                            </div>
+                            <ul class="group-list">
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="group-content">
+                                        <div class="group-head">
+                                            <h3></h3>
+                                            <div class="group-head-right">
+                                                <span>组长:</span>
+                                                <span></span>
+                                                <span>创建时间：</span>
+                                                <span>2020-12-5</span>
+                                            </div>
+                                        </div>
+                                        <div class="group-left">
+                                            <img src="https://sbay-image.baydn.com/team_emblem_image/tlpvfx/fdfd6ef1f30366526b08778694ee6602.22c53f867af9ba00ae191b2268fc94f5.jpeg?x-oss-process=image/format,jpg/quality,q_80"
+                                                alt="小组图片">
+                                        </div>
+                                        <div class="group-middle">
+                                            <span>排名</span>
+                                            <span></span>
+                                            <span>成员数</span>
+                                            <span></span>
+                                            <span>打卡率</span>
+                                            <span></span>
+                                            <span>成长值</span>
+                                            <span></span>
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        <div class="group-right">
+                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="public-right">
 
+                        </div>
                     </div>
-                    <div class="tab-pane" id="tab3">打卡学习</div>
-                    <div class="tab-pane" id="tab4">下载APP</div>
                 </div>
             </div>
         </div>
@@ -413,6 +872,34 @@
 <script type="text/javascript">
     // 在页面加载完后，小图标的旋转动画开始运行
     $(".icon").css("animation", "revolve 3s linear 0s infinite");
+
+    // 用ajax去获取本地json数据
+    $.ajax({
+        type: "get",
+        url: "../js/public.json",
+        dataType: "json",
+        success: function (resp) {
+            // 填充对应数据
+            console.log(resp);
+            const groupData = resp.objects;
+            for (let i = 0; i < 10; i++) {
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-head h3").append(groupData[i].name);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-head span:nth-child(2)").append(groupData[i].leader.nickname);
+                // 这里需要填充时间，需要字符串的操作
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-left img").attr("src", groupData[i].emblem_url);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(2)").append(groupData[i].weekly_rank);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(4)").append(groupData[i].size + "/" + groupData[i].quota);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(6)").append(groupData[i].checkin_rate);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(8)").append(groupData[i].rank);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle h4").append(groupData[i].motto);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle p").append(groupData[i].description);
+            }
+
+        },
+        error: function (err) {
+            console.log("fail" + err);
+        }
+    });
 </script>
 
 </html>
