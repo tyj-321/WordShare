@@ -366,6 +366,7 @@
     $(".get-checknum-btn").bind("click", function () {
         let i = 6;
         $(".get-checknum-btn").addClass("disabled");
+        $(".get-checknum-btn").attr("disabled","disabled");
         $(".get-checknum-btn").html("6s后重新获取");
         let checkTimer = setInterval(() => {
             i--;
@@ -373,6 +374,7 @@
         }, 1000);
         setTimeout(function () {
             $(".get-checknum-btn").removeClass("disabled");
+            $(".get-checknum-btn").removeAttr("disabled","disabled");
             $(".get-checknum-btn").html("重新获取");
             clearInterval(checkTimer);
         }, 6000);

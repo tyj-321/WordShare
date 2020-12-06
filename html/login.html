@@ -124,7 +124,6 @@
             padding-left: 20px;
             color: tomato;
             display: none;
-            transition: all 1.5s linear 0s;
         }
 
         .divider {
@@ -253,6 +252,7 @@
                 transform: translateY(0);
             }
         }
+
     </style>
 </head>
 
@@ -277,7 +277,7 @@
     <div id="login">
         <!-- 左边登录部分 -->
         <div class="login-left">
-            <form action="#">
+            <form action="" method="GET">
                 <h3>欢迎开启扇贝英语学习之旅</h3>
                 <div class="form-row">
                     <i class="iconfont">&#xe66b;</i>
@@ -295,7 +295,7 @@
                 <a href="./register.html" target="_blank" class="register">没有账号？<span>注册</span></a>
                 <a href="#" class="forget-pawd">忘记密码</a>
                 <div class="login-in">
-                    <a class="submit btn btn-info" href="#">登录</a>
+                    <button type="submit" class="submit btn btn-info">登录</button>
                 </div>
                 <p class="erro-msg">账号或密码错误</p>
             </form>
@@ -369,7 +369,7 @@
             }
             else {
                 $(".submit").removeClass("disabled");
-                $(".submit").removeAttr("disabled");
+                $(".submit").removeAttr("disabled","disabled");
             }
         });
         $("#user-pawd").bind("keyup", function () {
@@ -382,16 +382,20 @@
             }
             else {
                 $(".submit").removeClass("disabled");
-                $(".submit").removeAttr("disabled");
+                $(".submit").removeAttr("disabled","disabled");
             }
         });
         // 账号和密码不正确则显示错误信息提示
         $(".submit").bind("click", function () {
-            if ($("#user-num").val() != "123456" && $("#user-pawd").val() != "123456") {
-                $(".erro-msg").css("display", "block");
+            if ($("#user-num").val() != "123456" || $("#user-pawd").val() != "123456") {
+                $(".erro-msg").css("display","block");
+                // 3s后提示消失
+                setTimeout(function(){
+                    $(".erro-msg").css("display","none");
+                },2000)
             }
             else if ($("#user-num").val() === "123456" && $("#user-pawd").val() === "123456") {
-                $(".submit").attr("href", "./read.html");
+                $("form").attr("action","read.html");
             }
         });
     }
