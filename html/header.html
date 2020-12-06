@@ -211,6 +211,7 @@
 
         .public-left {
             width: 800px;
+            display: inline-block;
         }
 
         .public-top {
@@ -352,6 +353,64 @@
             font-size: 16px;
             display: none;
             cursor: pointer;
+        }
+
+        .public-right {
+            float: right;
+            margin-right: 30px;
+            margin-top: 10px;
+            width: 400px;
+            text-align: right;
+        }
+
+        .public-right h2 {
+            margin-bottom: 30px;
+            color: #209E85;
+        }
+
+        .table .success th {
+            text-align: center;
+        }
+
+        .table tr:not(.first) td {
+            text-align: left;
+        }
+
+        .table tr:not(.first) :nth-child(2) img {
+            width: 23px;
+            height: 23px;
+        }
+
+        .btn-toolbar {
+            float: right;
+            margin-bottom: 30px;
+        }
+
+        .public-right .froum h2 {
+            height: 45px;
+            clear: both;
+            border-bottom: 2px solid #CCCCCC;
+        }
+
+        .froum-list {
+            list-style-type: none;
+        }
+
+        .froum-list li {
+            font-size: 25px;
+            margin: 16px 0;
+            padding: 8px 5px;
+            text-align: left;
+            transition: all 0.1s ease-in;
+        }
+
+        .froum-list li a:hover {
+            border-bottom: none;
+        }
+
+        .froum-list li:hover {
+            border-left: 4px solid #209E85;
+            background-color: #eee;
         }
     </style>
 </head>
@@ -538,7 +597,7 @@
                             <div class="foot-right">
                                 <p>本网站纯属虚构，版权说明归马饼儿所有</p>
                                 <p>Copyright © 2019-2020 版权所有：成都新都区达广科技有限公司</p>
-                                <p>川ICP备12138号-3 公安备案号：2879737484733</p>
+                                <p>川ICP备号-3 公安备案号：2879737484733</p>
                             </div>
                         </footer>
                     </div>
@@ -584,7 +643,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -616,7 +675,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -648,7 +707,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -680,7 +739,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -712,7 +771,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -744,7 +803,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -776,7 +835,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -808,7 +867,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -840,7 +899,7 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
@@ -872,14 +931,128 @@
                                             <p></p>
                                         </div>
                                         <div class="group-right">
-                                            <button type="button" class="btn btn-warning">JOIN</button>
+                                            <button type="button" class="btn btn-danger">JOIN</button>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="public-right">
-
+                            <h2>小组排名</h2>
+                            <!-- 小组表格显示 -->
+                            <table class="table table-striped table-bordered table-hover">
+                                <tr class="success">
+                                    <th>排名</th>
+                                    <th>小组名</th>
+                                    <th>成长值</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>
+                                        <img src="" alt="头像">
+                                        <a href="#" target="_blank">我不配</a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <!-- 按钮导航条 -->
+                            <div class="btn-toolbar text-center">
+                                <div class="btn-group">
+                                    <i class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i></i>
+                                </div>
+                                <div class="btn-group">
+                                    <i class="btn btn-default">1</i>
+                                    <i class="btn btn-default">2</i>
+                                    <i class="btn btn-default">...</i>
+                                    <i class="btn btn-default">7</i>
+                                    <i class="btn btn-default">8</i>
+                                </div>
+                                <div class="btn-group">
+                                    <i class="btn btn-default"><i class="glyphicon glyphicon-chevron-right"></i></i>
+                                </div>
+                            </div>
+                            <div class="froum">
+                                <h2>论坛推荐</h2>
+                                <ul class="froum-list">
+                                    <li><a href="https://web.shanbay.com/team/forum/home" target="_blank">论坛首页</a></li>
+                                    <li><a href="https://web.shanbay.com/team/forum/uses" target="_blank">集思广益(使用答疑区)</a></li>
+                                    <li><a href="https://web.shanbay.com/team/forum/misc" target="_blank">天南海北(灌水区)</a></li>
+                                    <li><a href="https://web.shanbay.com/team/forum/17school" target="_blank">英语学苑(英语学习区)</a></li>
+                                    <li><a href="https://web.shanbay.com/team/forum/daily-translation" target="_blank">每日翻译(在线翻译)</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <!-- 设置一个回到顶部的按钮 -->
                         <div class="upToTop">
@@ -896,7 +1069,12 @@
     // 在页面加载完后，小图标的旋转动画开始运行
     $(".icon").css("animation", "revolve 3s linear 0s infinite");
 
-    // 用ajax去获取本地json数据
+    // 加入按钮事件，提示加入成功
+    $(".group-right button").bind("click", function (event){
+        console.log(event.target);
+    });
+
+    // 用ajax去获取本地小组的json数据
     $.ajax({
         type: "get",
         url: "../json/public.json",
@@ -917,7 +1095,7 @@
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(2)").append(groupData[i].weekly_rank);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(4)").append(groupData[i].size + "/" + groupData[i].quota);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(6)").append(checkRate);
-                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(8)").append(groupData[i].rank);
+                $(".group-list li:nth-child(" + (i + 1) + ") .group-middle span:nth-child(8)").append(groupData[i].points);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle h4").append(groupData[i].motto);
                 $(".group-list li:nth-child(" + (i + 1) + ") .group-middle p").append(groupData[i].description);
             }
@@ -928,6 +1106,71 @@
         }
     });
 
+    // 用ajax去获取本地小组排名的json数据
+    $.ajax({
+        type: "get",
+        url: "../json/grouplist.json",
+        dataType: "json",
+        success: function (resp) {
+            let groupList = resp.objects;
+            for (let j = 0; j < 10; j++) {
+                $("table tr:nth-child(" + (j + 2) + ") td:nth-child(2) img").attr("src", groupList[j].leader.avatar_url);
+                $("table tr:nth-child(" + (j + 2) + ") td:nth-child(2) a").append(groupList[j].name);
+                $("table tr:nth-child(" + (j + 2) + ") td:nth-child(3)").append(groupList[j].points);
+            }
+        },
+        error: function (err) {
+            console.log("fail" + err)
+        }
+    });
+
+    // 当点击下一页时，发送ajax请求数据再次填充
+    $(".glyphicon-chevron-right").bind("click", function () {
+        $.ajax({
+            type: "get",
+            url: "../json/grouplist2.json",
+            dataType: "json",
+            success: function (resp) {
+                let groupList = resp.objects;
+                for (let k = 0; k < 10; k++) {
+                    $("table tr:nth-child(" + (k + 2) + ") td:nth-child(2) img").attr("src", "");
+                    $("table tr:nth-child(" + (k + 2) + ") td:nth-child(2) a").html("");
+                    $("table tr:nth-child(" + (k + 2) + ") td:nth-child(3)").html("");
+                    $("table tr:nth-child(" + (k + 2) + ") td:nth-child(2) img").attr("src", groupList[k].emblem_url);
+                    $("table tr:nth-child(" + (k + 2) + ") td:nth-child(2) a").append(groupList[k].name);
+                    $("table tr:nth-child(" + (k + 2) + ") td:nth-child(3)").append(groupList[k].max_weekly_points);
+                }
+            },
+            error: function (err) {
+                console.log("fail" + err)
+            }
+        });
+    });
+
+     // 当点击上一页时，发送ajax请求数据再次填充
+     $(".glyphicon-chevron-left").bind("click", function () {
+        $.ajax({
+            type: "get",
+            url: "../json/grouplist.json",
+            dataType: "json",
+            success: function (resp) {
+                let groupList = resp.objects;
+                for (let m = 0; m < 10; m++) {
+                    $("table tr:nth-child(" + (m + 2) + ") td:nth-child(2) img").attr("src", "");
+                    $("table tr:nth-child(" + (m + 2) + ") td:nth-child(2) a").html("");
+                    $("table tr:nth-child(" + (m + 2) + ") td:nth-child(3)").html("");
+                    $("table tr:nth-child(" + (m + 2) + ") td:nth-child(2) img").attr("src", groupList[m].emblem_url);
+                    $("table tr:nth-child(" + (m + 2) + ") td:nth-child(2) a").append(groupList[m].name);
+                    $("table tr:nth-child(" + (m + 2) + ") td:nth-child(3)").append(groupList[m].max_weekly_points);
+                }
+            },
+            error: function (err) {
+                console.log("fail" + err)
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
     // 返回顶部按钮事件
     // 用canvas画布画出一个向上的箭头
     let cnv = $(".arrowhead");
@@ -946,11 +1189,11 @@
 
     $(window).bind("scroll", function () {
         // 当滚动条大于300的时候就把置顶显示出来
-        if ($(window).scrollTop() > 300) {
+        if ($(window).scrollTop() > 520) {
             $(".upToTop").css("display", "block");
         }
         // 当滚动条小于300的时候就把置定隐藏起来
-        if ($(window).scrollTop() < 300) {
+        if ($(window).scrollTop() < 520) {
             $(".upToTop").css("display", "none");
         }
     });
