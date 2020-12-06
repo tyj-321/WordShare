@@ -1070,8 +1070,10 @@
     $(".icon").css("animation", "revolve 3s linear 0s infinite");
 
     // 加入按钮事件，提示加入成功
-    $(".group-right button").bind("click", function (event){
-        console.log(event.target);
+    $(".group-right button").bind("click", function (){
+        $(this).html("JOINED!");
+        $(this).removeClass("btn-danger");
+        $(this).addClass("btn-success");
     });
 
     // 用ajax去获取本地小组的json数据
