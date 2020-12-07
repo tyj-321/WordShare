@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扇贝口语</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- jquery.js -->
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- 引入md5.js -->
+    <script src="../js/md5.js"></script>
+    <style type="text/css">
+        header {
+            height: 60px;
+            background-color: #209E85;
+            line-height: 60px;
+        }
+
+        header img {
+            width: 130px;
+        }
+
+        header li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 0 25px 0 25px;
+        }
+
+        header li a {
+            font-size: large;
+            color: #F3F6F6;
+        }
+
+        header .input-word {
+            display: inline-block;
+        }
+
+        header .glyphicon-remove,
+        header .glyphicon-search {
+            width: 30px;
+            height: 30px;
+        }
+
+        .speak-logo {
+            width: 100%;
+            height: 350px;
+            background-image: url("../src/intro-brand.png");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .speak-logo img {
+            width: 500px;
+            height: 200px;
+        }
+
+        .title-content {
+            display: inline-block;
+            border-left: 1px solid #D8D8D8;
+            padding-left: 30px;
+        }
+
+        .title-content p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .mobile-demo {
+            width: 1200px;
+            height: 400px;
+            margin: 110px auto 90px auto;
+        }
+
+        .mobile-demo .title img {
+            width: 80px;
+            height: 80px;
+            vertical-align: top;
+            margin-right: 30px;
+        }
+
+        .mobile-demo .title {
+            margin-bottom: 50px;
+            width: 600px;
+        }
+
+        .mobile-demo .mobile-img {
+            position: relative;
+            left: 650px;
+            top: -480px;
+            width: 350px;
+            height: 550px;
+        }
+
+        .mobile-demo .mobile-gif {
+            position: relative;
+            left: 310px;
+            top: -490px;
+            width: 282px;
+            height: 428px;
+        }
+
+        .mobile-demo span {
+            position: relative;
+            left: 400px;
+            top: -450px;
+            width: 100px;
+        }
+
+        .app-download {
+            display: inline-block;
+            height: 192px;
+            width: 96px;
+            position: relative;
+            top: -96px;
+            transform: translateY(0px);
+            transition: all 1s linear 0s;
+        }
+
+        .app-download:hover {
+            transform: translateY(96px);
+        }
+
+
+        .app-download img {
+            height: 96px;
+            width: 96px;
+        }
+
+        .show-window {
+            position: relative;
+            left: 1041px;
+            top: -707px;
+            width: 96px;
+            height: 96px;
+            overflow: hidden;
+        }
+
+        .all-class .class-title {
+            text-align: center;
+            margin-bottom: 30px;
+            ;
+        }
+
+        .class-content {
+            width: 1100px;
+            margin: auto;
+        }
+
+        .class-content-title {
+            margin-bottom: 30px;
+        }
+
+        .class-content-title h3 {
+            display: inline-block;
+        }
+
+        .class-content-title a {
+            display: inline-block;
+            margin-left: 900px;
+        }
+
+        .class-info {
+            display: inline-block;
+            clear: both;
+            padding: 10px 50px;
+            width: 510px;
+        }
+
+        .class-info img {
+            width: 150px;
+            height: 120px;
+            vertical-align: top;
+        }
+
+        .class-info .info {
+            display: inline-block;
+        }
+
+        .class-info .info h4 {
+            font-size: 18px;
+            font-weight: 400;
+            color: #333;
+        }
+
+        .class-info .info :nth-child(2) {
+            margin: 5px 0 10px 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .class-info .info :nth-child(3) {
+            color: #29c192;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部部分 -->
+    <header>
+        <ul>
+            <li>
+                <a href="./header.html"><img src="../src/logo_blank.png" alt="扇贝英语"></a>
+            </li>
+            <li><a href="#">单词</a></li>
+            <li><a href="./read.html">阅读</a></li>
+            <li><a href="#">口语</a></li>
+            <li><a href="./listen.html">听力</a></li>
+            <li>
+                <div class="input-word"><input id="query-word" class="form-control" type="text" placeholder="查单词或短语"
+                        required></div>
+                <i class="glyphicon glyphicon-remove"></i>
+                <a href="#resault-modal" data-toggle="modal"><i class="glyphicon glyphicon-search"></i></a>
+            </li>
+        </ul>
+        <div id="resault-modal" class="query-word-resalut modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i></button>
+                        <h3></h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>翻译结果：</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 口语logo -->
+    <div class="speak-logo">
+        <img src="../src/speakLogo.png" alt="口语logo">
+    </div>
+    <div class="mobile-demo">
+        <div class="title">
+            <img src="../src/icon-books.png" alt="图书图标">
+            <div class="title-content">
+                <h4>优质书籍，随时阅读</h4>
+                <p>场景多样，实用性强，重磅退出雅思口语系列</p>
+            </div>
+        </div>
+        <div class="title">
+            <img src="../src/icon-chats.png" alt="聊天图标">
+            <div class="title-content">
+                <h4>跟读模仿，听音复述</h4>
+                <p>逐句听与练，记忆强化，虐才有效</p>
+            </div>
+        </div>
+        <div class="title">
+            <img src="../src/icon-lights.png" alt="发音打分">
+            <div class="title-content">
+                <h4>每次阅读，及时发音打分</h4>
+                <p>说得怎么样，看看分数就知道了</p>
+            </div>
+        </div>
+        <img class="mobile-img" src="../src/mobile.png" alt="手机">
+        <img class="mobile-gif" src="../src/demo.gif" alt="手机动画">
+        <span class="btn btn-success">下载APP</span>
+        <div class="show-window">
+            <div class="app-download">
+                <img src="../src/app-download-qrcode.png" alt="下载APP二维码">
+            </div>
+        </div>
+    </div>
+    <div class="all-class">
+        <div class="class-title">
+            <h5>所有课程</h5>
+        </div>
+        <div class="class-content">
+            <div class="class-content-title">
+                <h3>雅思</h3>
+                <a href="#">查看更多</a>
+            </div>
+            <div class="class-info">
+                <img src="../src/app-download-qrcode.png" alt="介绍图片">
+                <div class="info">
+                    <h4>这里是标题</h4>
+                    <p>介绍</p>
+                    <p>价格</p>
+                </div>
+            </div>
+            <div class="class-info">
+                <img src="../src/app-download-qrcode.png" alt="介绍图片">
+                <div class="info">
+                    <h4>这里是标题</h4>
+                    <p>介绍</p>
+                    <p>价格</p>
+                </div>
+            </div>
+            <div class="class-content-title">
+                <h3>基础</h3>
+                <a href="#">查看更多</a>
+            </div>
+            <div class="class-info">
+                <img src="../src/app-download-qrcode.png" alt="介绍图片">
+                <div class="info">
+                    <h4>这里是标题</h4>
+                    <p>介绍</p>
+                    <p>价格</p>
+                </div>
+            </div>
+            <div class="class-info">
+                <img src="../src/app-download-qrcode.png" alt="介绍图片">
+                <div class="info">
+                    <h4>这里是标题</h4>
+                    <p>介绍</p>
+                    <p>价格</p>
+                </div>
+            </div>
+            <div class="class-content-title">
+                <h3>美语</h3>
+                <a href="#">查看更多</a>
+            </div>
+            <div class="class-info">
+                <img src="../src/app-download-qrcode.png" alt="介绍图片">
+                <div class="info">
+                    <h4>这里是标题</h4>
+                    <p>介绍</p>
+                    <p>价格</p>
+                </div>
+            </div>
+            <div class="class-info">
+                <img src="../src/app-download-qrcode.png" alt="介绍图片">
+                <div class="info">
+                    <h4>这里是标题</h4>
+                    <p>介绍</p>
+                    <p>价格</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    $.ajax({
+        type: "get",
+        url: "../json/class.json",
+        dataType: "json",
+        success: function(resp){
+            console.log(resp);
+        },
+        error: function(err){
+            console.log("fail"+err);
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    // 查询键添加监听事件，点击就查询
+    $(".glyphicon-search").bind("click", function () {
+        let query = $("#query-word").val();
+        if (query == "") {
+            $("#resault-modal .modal-header h3").html("输入内容为空，你要我查个寂寞啊！");
+            $("#resault-modal .modal-body p").html("");
+        }
+        else {
+            let salt = (new Date).getTime();
+            let str1 = "20201203000635963" + query + + salt + "vOs4_KnKcrzkK7D4PYZe";
+            let sign = MD5(str1);
+            $("#resault-modal .modal-header h3").html("");
+            $("#resault-modal .modal-body p").html("翻译结果：");
+            // 调用百度翻译API进行翻译
+            $.ajax({
+                type: "get",
+                url: "https://fanyi-api.baidu.com/api/trans/vip/translate",
+                dataType: "jsonp",
+                data: {
+                    q: query,
+                    from: "en",
+                    to: "zh",
+                    appid: "20201203000635963",
+                    salt: salt,
+                    sign: sign,
+                },
+                success: function (data) {
+                    // 成功了就把获得的数据结果填充进对应的元素
+                    $("#resault-modal .modal-header h3").append($("#query-word").val());
+                    $("#resault-modal .modal-body p").append(data.trans_result[0].dst);
+                },
+                error: function (err) {
+                    console.log("Error:" + err.status);
+                }
+            });
+        }
+    });
+    // 删除按钮添加监听事件，点击就把输入的内容清空
+    $(".glyphicon-remove").bind("click", function () {
+        $("#query-word").val("");
+    });
+</script>
+
+</html>
