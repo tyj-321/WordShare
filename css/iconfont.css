@@ -1,12 +1,12 @@
 /* 自定义图标字体样式 */
-@font-face {
+  @font-face {
     font-family: 'iconfont';
     src: url('iconfont.eot');
-    src: url('./font_2235837_cn9e1w0ie5k/iconfont.eot?#iefix') format('embedded-opentype'),
-        url('./font_2235837_cn9e1w0ie5k/iconfont.woff2') format('woff2'),
-        url('./font_2235837_cn9e1w0ie5k/iconfont.woff') format('woff'),
-        url('./font_2235837_cn9e1w0ie5k/iconfont.ttf') format('truetype'),
-        url('./font_2235837_cn9e1w0ie5k/iconfont.svg#iconfont') format('svg');
+    src: url('./font_2235837_zbaoq1iaj4/') format('embedded-opentype'),
+        url('./font_2235837_zbaoq1iaj4/iconfont.woff2') format('woff2'),
+        url('./font_2235837_zbaoq1iaj4/iconfont.woff') format('woff'),
+        url('./font_2235837_zbaoq1iaj4/iconfont.ttf') format('truetype'),
+        url('./font_2235837_zbaoq1iaj4/iconfont.svg#iconfont') format('svg');
   }
 
   .iconfont {
@@ -16,3 +16,4 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
