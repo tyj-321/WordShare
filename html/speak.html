@@ -17,6 +17,10 @@
     <!-- 引入md5.js -->
     <script src="../js/md5.js"></script>
     <style type="text/css">
+        body {
+            background-color: #EEEEEE;
+        }
+
         header {
             height: 60px;
             background-color: #209E85;
@@ -78,6 +82,9 @@
             width: 1200px;
             height: 400px;
             margin: 110px auto 90px auto;
+            background-color: #FDFDFD;
+            padding: 40px;
+            border-radius: 10px;
         }
 
         .mobile-demo .title img {
@@ -122,7 +129,7 @@
             position: relative;
             top: -96px;
             transform: translateY(0px);
-            transition: all 1s linear 0s;
+            transition: all 0.5s linear 0s;
         }
 
         .app-download:hover {
@@ -144,15 +151,56 @@
             overflow: hidden;
         }
 
+        .all-class {
+            width: 1200px;
+            margin: 0 auto 0;
+            background-color: #FDFDFD;
+            border-radius: 10px;
+        }
+
         .all-class .class-title {
             text-align: center;
             margin-bottom: 30px;
-            ;
+            
         }
 
         .class-content {
             width: 1100px;
             margin: auto;
+        }
+
+        .class-content a {
+            display: inline-block;
+            overflow: hidden;
+            transition: all 0.2s linear 0s;
+        }
+
+        .class-content a:hover {
+            box-shadow: 1px 1px 4px 4px #EEEEEE;
+        }
+
+        .class-content :nth-child(4),
+        .class-content :nth-child(5),
+        .class-content :nth-child(6),
+        .class-content :nth-child(7),
+        .class-content :nth-child(8),
+        .class-content :nth-child(9),
+        .class-content :nth-child(10),
+        .class-content :nth-child(14),
+        .class-content :nth-child(15),
+        .class-content :nth-child(16),
+        .class-content :nth-child(17),
+        .class-content :nth-child(18),
+        .class-content :nth-child(19),
+        .class-content :nth-child(20),
+        .class-content :nth-child(24),
+        .class-content :nth-child(25),
+        .class-content :nth-child(26),
+        .class-content :nth-child(27),
+        .class-content :nth-child(28),
+        .class-content :nth-child(29),
+        .class-content :nth-child(30) {
+            display: none;
         }
 
         .class-content-title {
@@ -163,9 +211,16 @@
             display: inline-block;
         }
 
-        .class-content-title a {
+        .class-content-title p {
+            box-sizing: content-box;
             display: inline-block;
             margin-left: 900px;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .class-content-title p:hover {
+            border-bottom: 1px solid black;
         }
 
         .class-info {
@@ -290,234 +345,287 @@
         <div class="class-content">
             <div class="class-content-title">
                 <h3>雅思</h3>
-                <a href="#">查看更多</a>
+                <p>查看更多</p>
             </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            <a href="https://www.shanbay.com/speak/courses/kdpkg">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/zisju">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/aphen">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/hooui">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/bkpzex">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/ytmwg">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/bqqfpx">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/tsuqs">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/pcgyp">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
+            </a>
             <div class="class-content-title">
                 <h3>基础</h3>
-                <a href="#">查看更多</a>
+                <p>查看更多</p>
             </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            <a href="https://www.shanbay.com/speak/courses/bbfkyl">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/bczkqi">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/bruyrp">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/bzdkl">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/eqaps">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/lhkie">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/ugjmp">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/juuxc">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/xbxai">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
+            </a>
             <div class="class-content-title">
                 <h3>美语</h3>
-                <a href="#">查看更多</a>
+                <p>查看更多</p>
             </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            <a href="https://www.shanbay.com/speak/courses/bslnzn">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/ftgrq">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/qgpic">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/nbtoz">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/iycfg">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/mnvdu">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/bqydkq">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/doqdz">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="class-info">
-                <img src="" alt="图片">
-                <div class="info">
-                    <h4></h4>
-                    <p></p>
-                    <p></p>
+            </a>
+            <a href="https://www.shanbay.com/speak/courses/tdrgx">
+                <div class="class-info">
+                    <img src="" alt="图片">
+                    <div class="info">
+                        <h4></h4>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-
     </div>
 </body>
 
@@ -528,14 +636,13 @@
         url: "../json/classYasi.json",
         dataType: "json",
         success: function (resp) {
-            console.log(resp);
             for (let i = 0; i < 9; i++) {
                 const classYasiData = resp.data.objects;
                 const classInfo = classYasiData[i].description.substring(20, 32);
-                $(".class-content .class-info:nth-child(" + (i + 2) + ") .info h4").append(classYasiData[i].title);
-                $(".class-content .class-info:nth-child(" + (i + 2) + ") .info p:nth-child(2)").append(classYasiData[i].summary);
-                $(".class-content .class-info:nth-child(" + (i + 2) + ") .info p:nth-child(3)").append(classInfo);
-                $(".class-content .class-info:nth-child(" + (i + 2) + ") img").attr("src", classYasiData[i].cover_urls);
+                $(".class-content a:nth-child(" + (i + 2) + ") .info h4").append(classYasiData[i].title);
+                $(".class-content a:nth-child(" + (i + 2) + ") .info p:nth-child(2)").append(classYasiData[i].summary);
+                $(".class-content a:nth-child(" + (i + 2) + ") .info p:nth-child(3)").append(classInfo);
+                $(".class-content a:nth-child(" + (i + 2) + ") img").attr("src", classYasiData[i].cover_urls);
             }
         },
         error: function (err) {
@@ -549,13 +656,12 @@
         url: "../json/classMei.json",
         dataType: "json",
         success: function (resp) {
-            console.log(resp);
             for (let j = 0; j < 9; j++) {
                 const classMeiData = resp.data.objects;
-                $(".class-content .class-info:nth-child(" + (j + 2 + 10) + ") .info h4").append(classMeiData[j].title);
-                $(".class-content .class-info:nth-child(" + (j + 2 + 10) + ") .info p:nth-child(2)").append(classMeiData[j].summary);
-                $(".class-content .class-info:nth-child(" + (j + 2 + 10) + ") .info p:nth-child(3)").append(classMeiData[j].description);
-                $(".class-content .class-info:nth-child(" + (j + 2 + 10) + ") img").attr("src", classMeiData[j].cover_urls[0]);
+                $(".class-content a:nth-child(" + (j + 2 + 10) + ") .info h4").append(classMeiData[j].title);
+                $(".class-content a:nth-child(" + (j + 2 + 10) + ") .info p:nth-child(2)").append(classMeiData[j].summary);
+                $(".class-content a:nth-child(" + (j + 2 + 10) + ") .info p:nth-child(3)").append(classMeiData[j].description);
+                $(".class-content a:nth-child(" + (j + 2 + 10) + ") img").attr("src", classMeiData[j].cover_urls[0]);
             }
         },
         error: function (err) {
@@ -569,13 +675,12 @@
         url: "../json/classBase.json",
         dataType: "json",
         success: function (resp) {
-            console.log(resp);
             for (let k = 0; k < 9; k++) {
                 const classMeiData = resp.data.objects;
-                $(".class-content .class-info:nth-child(" + (k + 2 + 20) + ") .info h4").append(classMeiData[k].title);
-                $(".class-content .class-info:nth-child(" + (k + 2 + 20) + ") .info p:nth-child(2)").append(classMeiData[k].summary);
-                $(".class-content .class-info:nth-child(" + (k + 2 + 20) + ") .info p:nth-child(3)").append(classMeiData[k].description);
-                $(".class-content .class-info:nth-child(" + (k + 2 + 20) + ") img").attr("src", classMeiData[k].cover_urls[0]);
+                $(".class-content a:nth-child(" + (k + 2 + 20) + ") .info h4").append(classMeiData[k].title);
+                $(".class-content a:nth-child(" + (k + 2 + 20) + ") .info p:nth-child(2)").append(classMeiData[k].summary);
+                $(".class-content a:nth-child(" + (k + 2 + 20) + ") .info p:nth-child(3)").append(classMeiData[k].description);
+                $(".class-content a:nth-child(" + (k + 2 + 20) + ") img").attr("src", classMeiData[k].cover_urls[0]);
             }
         },
         error: function (err) {
@@ -583,6 +688,25 @@
         }
     });
 
+    // 点击查看更多会显示更多数据
+    $(".class-content div:nth-child(1) p").bind("click", function () {
+        $(this).css("display","none");
+        for (let o = 4; o <= 10; o++) {
+            $(".class-content a:nth-child(" + o + ")").css("display", "inline-block");
+        }
+    });
+    $(".class-content div:nth-child(11) p").bind("click", function () {
+        $(this).css("display","none");
+        for (let p = 14; p <= 20; p++) {
+            $(".class-content a:nth-child(" + p + ")").css("display", "inline-block");
+        }
+    });
+    $(".class-content div:nth-child(21) p").bind("click", function () {
+        $(this).css("display","none");
+        for (let q = 24; q <= 30; q++) {
+            $(".class-content a:nth-child(" + q + ")").css("display", "inline-block");
+        }
+    });
 
 </script>
 
