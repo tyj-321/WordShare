@@ -252,7 +252,6 @@
                 transform: translateY(0);
             }
         }
-
     </style>
 </head>
 
@@ -353,7 +352,7 @@
     $(".header-right").bind("mouseout", function () {
         $(".download-erweima").css("display", "none");
     });
-    
+
     // 在页面加载完后，从下到上的轮播动画开始运行
     $(".all-img").css("animation", "up-carousel 12s ease-in-out 2s infinite");
     // // 对输入的密码进行正确性的判断
@@ -369,7 +368,7 @@
             }
             else {
                 $(".submit").removeClass("disabled");
-                $(".submit").removeAttr("disabled","disabled");
+                $(".submit").removeAttr("disabled", "disabled");
             }
         });
         $("#user-pawd").bind("keyup", function () {
@@ -382,21 +381,24 @@
             }
             else {
                 $(".submit").removeClass("disabled");
-                $(".submit").removeAttr("disabled","disabled");
+                $(".submit").removeAttr("disabled", "disabled");
             }
         });
         // 账号和密码不正确则显示错误信息提示
-        $(".submit").bind("click", function () {
+        $(".submit").bind("click", function (e) {
             if ($("#user-num").val() != "123456" || $("#user-pawd").val() != "123456") {
-                $(".erro-msg").css("display","block");
-                // 3s后提示消失
-                setTimeout(function(){
+                // 错误就取消默认提交行为 并提醒错误
+                e.preventDefault();
+                $(".erro-msg").css("display", "block");
+                // 2s后提示消失
+                let erroHidden = setTimeout(function(){
                     $(".erro-msg").css("display","none");
                 },2000)
             }
             else if ($("#user-num").val() === "123456" && $("#user-pawd").val() === "123456") {
-                $("form").attr("action","read.html");
+                $("form").attr("action", "word.html");
             }
+            // clearTimeout(erroHidden);
         });
     }
     check();
