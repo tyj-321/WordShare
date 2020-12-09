@@ -74,7 +74,230 @@
             font-weight: 700;
             font-size: 70px;
         }
-    </style>
+
+        .user-info-left {
+            width: 600px;
+            height: 270px;
+            overflow: hidden;
+            margin-top: 20px;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .user-info-left img {
+            width: 150px;
+            height: 200px;
+            border-radius: 5px;
+            vertical-align: top;
+            margin-right: 30px;
+        }
+
+        .book-info {
+            display: inline-block;
+        }
+
+        .book-info :nth-child(1) {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .book-info :nth-child(3) {
+            font-size: 16px;
+            margin-left: 40px;
+        }
+
+        .book-info :nth-child(4) {
+            font-size: 16px;
+            margin-top: 80px;
+        }
+
+        .user-info-right {
+            width: 600px;
+            height: 270px;
+            float: right;
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .new-word,
+        .review-word,
+        .ready-word {
+            display: inline-block;
+            margin: 30px 40px;
+        }
+
+        .new-word h1,
+        .review-word h1,
+        .ready-word h1 {
+            font-size: 50px;
+            font-weight: 900;
+        }
+
+        .new-word p,
+        .review-word p,
+        .ready-word p {
+            font-size: 20px;
+        }
+
+        .user-info hr {
+            height: 10px;
+            color: #D8DBE4;
+            margin: 5px 0;
+        }
+
+        .blockquote small {
+            float: right;
+        }
+        
+        .control {
+            width: 1000px;
+            margin: 30px auto;
+        }
+
+        .control :nth-child(1) {
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        .control :nth-child(2) {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .word-note {
+            width: 1000px;
+            margin: 30px auto;
+        }
+
+        .table tr .sound {
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            
+        }
+
+        .table tr .time {
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .table tr .word-trans {
+            padding-left: 10px;
+            height: 60px;
+        }
+
+        .table tr .word-trans :nth-child(1) {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .table tr .iconfont {
+            font-size: 40px;
+            color: #28BEA0;
+            cursor: pointer;
+        }
+
+        .btn-toolbar {
+            width: 300px;
+            margin: 0 0 0 1000px;
+        }
+
+        .footer {
+            width: 100%;
+            height: 280px;
+            background-image: url(../src/footer.png);
+            background-size: cover;
+            color: #FFFFFF;
+        }
+
+        .footer h2 span {
+            font-size: 22px;
+        }
+
+        .footer .intro {
+            position: relative;
+            left: 200px;
+            top: 70px;
+        }
+
+        .footer .down-load {
+            float: right;
+            overflow: hidden;
+            width: 300px;
+            height: 160px;
+        }
+
+        .footer .down-load img {
+            width: 100px;
+            height: 100px;
+            margin-right: 30px;
+            margin-bottom: 5px;
+        }
+
+        .footer .down-load div {
+            display: inline-block;
+        }
+
+        .footer .down-load-btn {
+            display: inline-block;
+            position: relative;
+            left: 900px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .footer .down-load-btn :nth-child(1) {
+            position: absolute;
+            top: -190px;
+            height: 200px;
+            width: 200px;
+            display: none;
+        }
+
+        .footer .down-load-btn :nth-child(2) {
+            position: absolute;
+            left: 40px;
+            top: -150px;
+            width: 110px;
+            height: 110px;
+            display: none;
+        }
+
+        .footer .down-load-btn :nth-child(5) {
+            position: absolute;
+            top: -120px;
+            height: 200px;
+            width: 200px;
+            display: none;
+        }
+
+        .footer .down-load-btn :nth-child(6) {
+            position: absolute;
+            left: 40px;
+            top: -80px;
+            width: 110px;
+            height: 110px;
+            display: none;
+        }
+
+        .footer .down-load-btn span {
+            height: 50px;
+            line-height: 40px;
+            margin-bottom: 20px;
+            display: block;
+            border: 1px solid #FFFFFF;
+            border-radius: 25px;
+            font-size: 20px;
+        }
+
+        .footer .down-load-btn span:hover {
+            color: #FFFFFF;
+        }
+     </style>
 </head>
 
 <body>
@@ -118,14 +341,131 @@
     <div class="user-info">
         <h1>已经学习<span>30</span>天</h1>
         <div class="user-info-left">
-
+            <img src="../src/wordBook.jpg" alt="单词本">
+            <div class="book-info">
+                <p>扇贝循环单词本四级核心词汇</p>
+                <span class="btn btn-success">预计完成时间</span>
+                <span>2020/12/12</span>
+                <p>已完成:640/1380词</p>
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" style="width: 46.3%;"></div>
+                </div>
+            </div>
         </div>
         <div class="user-info-right">
-            
+            <h4>----任务----</h4>
+            <div class="new-word">
+                <h1>30</h1>
+                <p>新词数</p>
+            </div>
+            <div class="review-word">
+                <h1>80</h1>
+                <p>复习次数</p>
+            </div>
+            <div class="ready-word">
+                <h1>960</h1>
+                <p>待复习</p>
+            </div>
+        </div>
+        <hr>
+        <blockquote class="blockquote">
+            <p>Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.</p>
+            <p>不要害怕你的生活会结束，应该担心你的生活从未真正开始过。</p>
+            <small>John Henry Newman</small>
+        </blockquote>
+    </div>
+    <div class="control">
+        <span>共40词</span>
+        <span>管理<i class="glyphicon glyphicon-wrench"></i></span>
+    </div>
+    <!-- 单词本表格 -->
+    <div class="word-note table-responsive">
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+                <td class="sound"><i class="iconfont">&#xe62e;</i></td>
+                <td class="word-trans">
+                    <p>notion</p>
+                    <p>n.观念，想法，主张</p>
+                </td>
+                <td class="time">2020/12/9</td>
+            </tr>
+            <tr>
+                <td class="sound"><i class="iconfont">&#xe62e;</i></td>
+                <td class="word-trans">
+                    <p>rosy</p>
+                    <p>adj.粉红色的, 红润的, 美好的, 乐观的</p>
+                </td>
+                <td class="time">2020/12/9</td>
+            </tr>
+            <tr>
+                <td class="sound"><i class="iconfont">&#xe62e;</i></td>
+                <td class="word-trans">
+                    <p>hack</p>
+                    <p>v.砍, 劈, 猛踢, 非法侵入（他人的计算机系统）</p>
+                </td>
+                <td class="time">2020/12/9</td>
+            </tr>
+            <tr>
+                <td class="sound"><i class="iconfont">&#xe62e;</i></td>
+                <td class="word-trans">
+                    <p>wheat</p>
+                    <p>n.小麦，小麦籽</p>
+                </td>
+                <td class="time">2020/12/9</td>
+            </tr>
+            <tr>
+                <td class="sound"><i class="iconfont">&#xe62e;</i></td>
+                <td class="word-trans">
+                    <p>abruptly</p>
+                    <p>adv.突然，立刻，忽然间，猝然</p>
+                </td>
+                <td class="time">2020/12/9</td>
+            </tr>
+        </table>
+    </div>
+    <!-- 按钮导航条 -->
+    <div class="btn-toolbar text-center">
+        <div class="btn-group">
+            <i class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i></i>
+        </div>
+        <div class="btn-group">
+            <i class="btn btn-default">1</i>
+            <i class="btn btn-default">2</i>
+            <i class="btn btn-default">...</i>
+            <i class="btn btn-default">7</i>
+            <i class="btn btn-default">8</i>
+        </div>
+        <div class="btn-group">
+            <i class="btn btn-default"><i class="glyphicon glyphicon-chevron-right"></i></i>
         </div>
     </div>
-    <footer>
-
+    <footer class="footer">
+        <div class="intro">
+            <h2>扇贝单词
+                <span>(英语版)</span>
+            </h2>
+            <p>世上无难事，只要肯逃避</p>
+        </div>
+        <div class="down-load">
+            <div class="qr-code">
+                <img src="../src/app.png" alt="下载APP二维码">
+                <p>扫码下载APP</p>
+                <p>随时随地都可以学习</p>
+            </div>
+            <div class="official">
+                <img src="../src/appPublic.png" alt="公众号">
+                <p>扫码关注公众号</p>
+                <p>最新信息及时推送</p>
+            </div>
+        </div>
+        <div class="down-load-btn">
+            <img src="../src/border.png" alt="二维码边框">
+            <img src="../src/qrcode.png" alt="二维码">
+            <span class="btn">Android下载</span>
+            <span class="btn">iOS下载</span>
+            <img src="../src/border.png" alt="二维码边框">
+            <img src="../src/qrcode.png" alt="二维码">
+        </div>
     </footer>
 </body>
 <script type="text/javascript">
@@ -171,10 +511,37 @@
         $("#query-word").val("");
     });
 
+    // 当鼠标在点击下载APP的按钮上就显示二维码 移开会隐藏
+    $(".down-load-btn span:nth-child(3)").bind("mouseover",function (){
+        $(".down-load-btn img:nth-child(1)").css("display","inline-block");
+        $(".down-load-btn img:nth-child(2)").css("display","inline-block");    
+    });
+    $(".down-load-btn span:nth-child(3)").bind("mouseleave",function (){
+        $(".down-load-btn img:nth-child(1)").css("display","none");
+        $(".down-load-btn img:nth-child(2)").css("display","none");    
+    });
+
+    $(".down-load-btn span:nth-child(4)").bind("mouseover",function (){
+        $(".down-load-btn img:nth-child(5)").css("display","inline-block");
+        $(".down-load-btn img:nth-child(6)").css("display","inline-block");    
+    });
+    $(".down-load-btn span:nth-child(4)").bind("mouseleave",function (){
+        $(".down-load-btn img:nth-child(5)").css("display","none");
+        $(".down-load-btn img:nth-child(6)").css("display","none");    
+    });
+
+    // 单词本里的喇叭按钮点击默认美式发音
+    $(".table tr .iconfont").bind("click", function(e){
+        let crrentNode = e.target.parentNode.nextSibling.nextSibling.firstChild.nextSibling;
+        let queryValue = crrentNode.textContent;
+        let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + queryValue;
+        let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
+        $(".modal-body").append(audioElem);
+    });
+
     // 点击英式发音就请求英式发音API 利用src可以跨域
     $(".England").bind("click", function(){
         let queryValue = $("#query-word").val();
-        console.log(1);
         let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + queryValue;
         let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
         $(".modal-body").append(audioElem);
@@ -183,7 +550,6 @@
     // 点击美式发音就请求美式发音API 利用src可以跨域
     $(".Amarica").bind("click", function(){
         let queryValue = $("#query-word").val();
-        console.log(1);
         let audioUrl = "http://dict.youdao.com/dictvoice?type=0&audio=" + queryValue;
         let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
         $(".modal-body").append(audioElem);
