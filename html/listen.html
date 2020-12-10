@@ -44,8 +44,29 @@
             display: inline-block;
         }
 
-        header .glyphicon-remove,
+        #query-word {
+            border-radius: 20px;
+            width: 120px;
+            transition: all 0.3s linear 0s;
+        }
+
+        #query-word:focus {
+            width: 200px;
+        }
+
+        header .glyphicon-remove {
+            position: relative;
+            left: -25px;
+            width: 25px;
+            height: 25px;
+            visibility: hidden;
+            cursor: pointer;
+        }
+
         header .glyphicon-search {
+            position: relative;
+            left: -30px;
+            top: 3px;
             width: 30px;
             height: 30px;
         }
@@ -175,9 +196,10 @@
             width: 100%;
             background-image: url("../src/footer.jpg");
             background-size: cover;
-            text-align: center;
             color: #FFFFFF;
-            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .footer img {
@@ -185,6 +207,10 @@
             height: 130px;
             margin-top: 20px;
             margin-bottom: 20px;
+        }
+
+        .footer .footer-content {
+            text-align: center;
         }
     </style>
 </head>
@@ -211,13 +237,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i></button>
                         <h3></h3>
                     </div>
                     <div class="modal-body">
                         <p>翻译结果：</p>
                         <span>美式发音<i class="iconfont Amarica">&#xe62e;</i></span>
-                        <span>英式发音<i class="iconfont England" >&#xe62e;</i></span>
+                        <span>英式发音<i class="iconfont England">&#xe62e;</i></span>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-danger" data-dismiss="modal">关闭</button>
@@ -282,9 +307,11 @@
     </section>
     <!-- 网页底部 -->
     <footer class="footer">
-        <h2>英语听力，其实很简单</h2>
-        <img src="../src/listenCode.png" alt="听力二维码">
-        <p>扫描二维码即可下载</p>
+        <div class="footer-content">
+            <h2>英语听力，其实很简单</h2>
+            <img src="../src/listenCode.png" alt="听力二维码">
+            <p>扫描二维码即可下载</p>
+        </div>
     </footer>
 </body>
 
@@ -331,21 +358,29 @@
         $("#query-word").val("");
     });
 
+    // 当查询输入框聚焦的时候就把删除键显示 非聚焦就隐藏
+    $("#query-word").bind("focus", function () {
+        $(".glyphicon-remove").css("visibility", "visible");
+    });
+    $("#query-word").bind("blur", function () {
+        $(".glyphicon-remove").css("visibility", "hidden");
+    });
+
     // 点击英式发音就请求英式发音API 利用src可以跨域
-    $(".England").bind("click", function(){
+    $(".England").bind("click", function () {
         let queryValue = $("#query-word").val();
         console.log(1);
         let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + queryValue;
-        let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
+        let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
         $(".modal-body").append(audioElem);
     });
 
     // 点击美式发音就请求美式发音API 利用src可以跨域
-    $(".Amarica").bind("click", function(){
+    $(".Amarica").bind("click", function () {
         let queryValue = $("#query-word").val();
         console.log(1);
         let audioUrl = "http://dict.youdao.com/dictvoice?type=0&audio=" + queryValue;
-        let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
+        let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
         $(".modal-body").append(audioElem);
     });
 </script>

@@ -44,8 +44,29 @@
             display: inline-block;
         }
 
-        header .glyphicon-remove,
+        #query-word {
+            border-radius: 20px;
+            width: 120px;
+            transition: all 0.3s linear 0s;
+        }
+
+        #query-word:focus {
+            width: 200px;
+        }
+
+        header .glyphicon-remove {
+            position: relative;
+            left: -25px;
+            width: 25px;
+            height: 25px;
+            visibility: hidden;
+            cursor: pointer;
+        }
+
         header .glyphicon-search {
+            position: relative;
+            left: -30px;
+            top: 3px;
             width: 30px;
             height: 30px;
         }
@@ -314,7 +335,7 @@
             <li>
                 <div class="input-word"><input id="query-word" class="form-control" type="text" placeholder="查单词或短语"
                         required></div>
-                <i class="glyphicon glyphicon-remove"></i>
+                <span><i class="glyphicon glyphicon-remove"></i></span>
                 <a href="#resault-modal" data-toggle="modal"><i class="glyphicon glyphicon-search"></i></a>
             </li>
         </ul>
@@ -322,7 +343,6 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i></button>
                         <h3></h3>
                     </div>
                     <div class="modal-body">
@@ -509,6 +529,13 @@
     // 删除按钮添加监听事件，点击就把输入的内容清空
     $(".glyphicon-remove").bind("click", function () {
         $("#query-word").val("");
+    });
+    // 当查询输入框聚焦的时候就把删除键显示 非聚焦就隐藏
+    $("#query-word").bind("focus", function(){
+        $(".glyphicon-remove").css("visibility","visible");
+    });
+    $("#query-word").bind("blur", function(){
+        $(".glyphicon-remove").css("visibility","hidden");
     });
 
     // 当鼠标在点击下载APP的按钮上就显示二维码 移开会隐藏
