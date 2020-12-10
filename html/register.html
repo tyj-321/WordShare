@@ -281,8 +281,7 @@
                 <div class="form-row">
                     <i class="iconfont">&#xe66b;</i>
                     <div class="col-sm-11">
-                        <input id="user-num" class="form-control" type="text" required autofocus
-                            placeholder="用户名">
+                        <input id="user-name" class="form-control" type="text" required autofocus placeholder="用户名">
                     </div>
                 </div>
                 <div class="form-row">
@@ -307,7 +306,8 @@
                     </div>
                 </div>
                 <div class="agree">
-                    <input type="checkbox" checked class="agree-check">我已阅读并同意<a href="https://www.shanbay.com/help/about/agreement/" target="_blank">使用协议</a>
+                    <input type="checkbox" checked class="agree-check">我已阅读并同意<a
+                        href="https://www.shanbay.com/help/about/agreement/" target="_blank">使用协议</a>
                 </div>
                 <a href="./login.html" target="_blank" class="to-login">已有账号，去登录</a>
                 <div class="register-up">
@@ -372,22 +372,45 @@
     // 在页面加载完后，从下到上的轮播动画开始运行
     $(".all-img").css("animation", "up-carousel 12s ease-in-out 2s infinite");
 
-    // 获取验证码按钮添加监听事件，点击就需要60s后才能点击
+    // 获取验证码按钮添加监听事件，点击就需要6s后才能点击
     $(".get-checknum-btn").bind("click", function () {
         let i = 6;
         $(".get-checknum-btn").addClass("disabled");
-        $(".get-checknum-btn").attr("disabled","disabled");
+        $(".get-checknum-btn").attr("disabled", "disabled");
         $(".get-checknum-btn").html("6s后重新获取");
         let checkTimer = setInterval(() => {
             i--;
-            $(".get-checknum-btn").html(i+"s后重新获取");
+            $(".get-checknum-btn").html(i + "s后重新获取");
         }, 1000);
         setTimeout(function () {
             $(".get-checknum-btn").removeClass("disabled");
-            $(".get-checknum-btn").removeAttr("disabled","disabled");
+            $(".get-checknum-btn").removeAttr("disabled", "disabled");
             $(".get-checknum-btn").html("重新获取");
             clearInterval(checkTimer);
         }, 6000);
+    });
+
+    // 当点击注册按钮时，把用户的账号和密码装成对象，并放入到localstorage
+    $(".register-up button").bind("click", function (e) {
+        e.preventDefault();
+        const userName = $("#user-name").val();
+        const userPawd = $("#user-pawd").val();
+        let newUser = {
+            userName: userName,
+            userPawd: userPawd,
+        }
+        let userInfo = JSON.parse(localStorage.getItem("users-info"));
+        if (userInfo === null) {
+            let userData = {
+                "data": []
+            }
+            userData.data.push(newUser);
+            localStorage.setItem("users-info", JSON.stringify(userData));
+        }
+        else {
+            userInfo.data.push(newUser);
+            localStorage.setItem("users-info", JSON.stringify(userInfo));
+        }
     });
 </script>
 

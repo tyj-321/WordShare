@@ -28,6 +28,10 @@
             margin: 10px 20px 0 5px;
         }
 
+        #login-register .btn {
+            display: none;
+        }
+
         #logo img {
             width: 130px;
             margin: 20px 0 20px 0;
@@ -420,7 +424,8 @@
         <div id="page-head">
             <!-- 登录和注册部分 -->
             <div id="login-register" class="pull-right">
-                <a href="./login.html" target="_blank" id="login">登录</a>
+                <span class="btn btn-danger">退出</span>
+                <a href="./login.html" id="login">登录</a>
                 <span>|</span>
                 <a href="./register.html" target="_blank" id="register">注册</a>
             </div>
@@ -440,25 +445,10 @@
                                 <li data-target="#carousel-box" data-slide-to="0" class="active"></li>
                                 <li data-target="#carousel-box" data-slide-to="1"></li>
                                 <li data-target="#carousel-box" data-slide-to="2"></li>
-                                <li data-target="#carousel-box" data-slide-to="3"></li>
                             </ol>
                             <!-- 幻灯片 -->
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <a href="word.html" target="_blank"><img src="../src/word.png" alt="扇贝单词"></a>
-                                    <div class="carousel-caption">
-                                        <h4>扇贝单词</h4>
-                                        <p>
-                                            海量词汇，派生词<br>
-                                            权威英语词典<br>
-                                            启发式提示抗遗忘<br>
-                                            再也不怕记不住单词啦<br>
-                                        </p>
-                                        <a href="#" class="btn btn-default">下载APP</a>
-                                    </div>
-                                </div>
-
-                                <div class="item">
                                     <a href="listen.html" target="_blank"><img src="../src/listen.png" alt="扇贝听力"></a>
                                     <div class="carousel-caption">
                                         <h4>扇贝听力</h4>
@@ -1066,6 +1056,23 @@
     </div>
 </body>
 <script type="text/javascript">
+    const user = sessionStorage.getItem("user");
+    if(user != null){
+        $("#login").html(user+"的主页");
+        $("#login").attr("href","word.html");
+        $("#login-register .btn").css("display","inline-block");
+    }
+    else {
+        $("#login-register .btn").css("display","none");
+    }
+
+    $("#login-register .btn").bind("click", function(){
+        sessionStorage.clear();
+        $(this).css("display","none");
+        $("#login").html("登录");
+        $("#login").attr("href","login.html");
+    })
+
     // 在页面加载完后，小图标的旋转动画开始运行
     $(".icon").css("animation", "revolve 3s linear 0s infinite");
 

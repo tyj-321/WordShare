@@ -281,8 +281,7 @@
                 <div class="form-row">
                     <i class="iconfont">&#xe66b;</i>
                     <div class="col-sm-11">
-                        <input id="user-num" class="form-control" type="text" autofocus required
-                            placeholder="用户名">
+                        <input id="user-name" class="form-control" type="text" autofocus required placeholder="用户名">
                     </div>
                 </div>
                 <div class="form-row">
@@ -358,11 +357,11 @@
     // // 对输入的密码进行正确性的判断
     function check() {
         // 输入框添加一个事件监听，当输入内容发生变化的时候，就判断内容是否为空，不为空则可以点击登录按钮
-        $("#user-num").bind("keyup", function () {
+        $("#user-name").bind("keyup", function () {
             // 当输入内容为空的时候，不能点击登录键
-            var userNum = $("#user-num").val();
+            var userName = $("#user-name").val();
             var userPawd = $("#user-pawd").val();
-            if (userNum == "" || userPawd == "") {
+            if (userName == "" || userPawd == "") {
                 $(".submit").addClass("disabled");
                 $(".submit").attr("disabled", "disabled");
             }
@@ -373,9 +372,9 @@
         });
         $("#user-pawd").bind("keyup", function () {
             // 当输入内容为空的时候，不能点击登录键
-            var userNum = $("#user-num").val();
+            var userName = $("#user-name").val();
             var userPawd = $("#user-pawd").val();
-            if (userPawd == "" || userNum == "") {
+            if (userPawd == "" || userName == "") {
                 $(".submit").addClass("disabled");
                 $(".submit").attr("disabled", "disabled");
             }
@@ -386,19 +385,36 @@
         });
         // 账号和密码不正确则显示错误信息提示
         $(".submit").bind("click", function (e) {
-            if ($("#user-num").val() != "123456" || $("#user-pawd").val() != "123456") {
-                // 错误就取消默认提交行为 并提醒错误
-                e.preventDefault();
-                $(".erro-msg").css("display", "block");
-                // 2s后提示消失
-                let erroHidden = setTimeout(function(){
-                    $(".erro-msg").css("display","none");
-                },2000)
+            console.log(e);
+            let userName = $("#user-name").val();
+            let userPawd = $("#user-pawd").val();
+            let userArray = JSON.parse(localStorage.getItem("users-info")).data;
+            for (let i = userArray.length - 1; i >= 0; i--) {
+                console.log(userArray[i].userName);
+                console.log(userArray[i].userPawd);
+                if (userName != userArray[i].userName || userPawd != userArray[i].userPawd) {
+                    // 错误就取消默认提交行为 并提醒错误
+                    // e.preventDefault();
+                    $(".erro-msg").css("display", "block");
+                    // 2s后提示消失
+                    setTimeout(function () {
+                        $(".erro-msg").css("display", "none");
+                    }, 2000)
+                }
+                else if (userName === userArray[i].userName && userPawd === userArray[i].userPawd) {
+                    if (sessionStorage.getItem("user") === null) {
+                        sessionStorage.setItem("user", userName);
+                        sessionStorage.setItem("pawd", userPawd);
+                    }
+                    else {
+                        sessionStorage.clear();
+                        sessionStorage.setItem("user", userName);
+                        sessionStorage.setItem("pawd", userPawd);
+                    }
+                    $("form").attr("action", "word.html");
+                    break;
+                }
             }
-            else if ($("#user-num").val() === "123456" && $("#user-pawd").val() === "123456") {
-                $("form").attr("action", "word.html");
-            }
-            // clearTimeout(erroHidden);
         });
     }
     check();
