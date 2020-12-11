@@ -198,6 +198,28 @@
             clear: both;
         }
 
+        .same-user-msg,
+        .regist-success-msg {
+            position: absolute;
+            top: 140px;
+            left: 100px;
+            width: 200px;
+            height: 70px;
+            background-color: black;
+            opacity: 0.6;
+            border-radius: 10px;
+            line-height: 70px;
+            text-align: center;
+            display: none;
+        }
+
+        .same-user-msg p,
+        .regist-success-msg p {
+            font-size: 25px;
+            color: #FFFFFF;
+        }
+
+
         .register-right {
             position: absolute;
             left: 400px;
@@ -341,6 +363,12 @@
                     </li>
                 </ul>
             </div>
+            <div class="regist-success-msg">
+                <p>注册成功<i class="glyphicon glyphicon-check"></i></p>
+            </div>
+            <div class="same-user-msg">
+                <p>用户名已被使用</p>
+            </div>
         </div>
         <!-- 右边介绍部分，用css3做一个从下到上动画轮播 -->
         <div class="register-right">
@@ -361,6 +389,15 @@
     </div>
 </body>
 <script type="text/javascript">
+    // 当用户已经登录就直接进入用户主页，没有登录则需要先登录
+    const user = sessionStorage.getItem("user");
+    if(user != null) {
+        $("header ul li:nth-child(2) a").attr("href","word.html");
+    }
+    else {
+        $("header ul li:nth-child(2) a").attr("href","login.html");
+    }
+    
     // 给下载APP那个按钮设置一个监听事件，当鼠标悬浮时，把二维码显示出来，移出就隐藏
     $(".header-right").bind("mouseover", function () {
         $(".download-erweima").css("display", "inline-block");
@@ -406,10 +443,38 @@
             }
             userData.data.push(newUser);
             localStorage.setItem("users-info", JSON.stringify(userData));
+            // 提示用户注册成功，并在2s后提示信息消失
+            $(".regist-success-msg").css("display", "block");
+            setTimeout(function () {
+                $(".regist-success-msg").css("display", "none");
+            }, 2000)
         }
         else {
-            userInfo.data.push(newUser);
-            localStorage.setItem("users-info", JSON.stringify(userInfo));
+            // 判断是否用户名已经被使用
+            const users = userInfo.data;
+            for (let i = users.length - 1; i >= 0; i--) {
+                if (userName === users[i].userName) {
+                    $("#user-name").val("");
+                    $("#user-pawd").val("");
+                    // 提示用户名已经被使用
+                    $(".same-user-msg").css("display", "block");
+                    setTimeout(function () {
+                        $(".same-user-msg").css("display", "none");
+                    }, 2000)
+                    break;
+                }
+                else if (i === 0) {
+                    userInfo.data.push(newUser);
+                    localStorage.setItem("users-info", JSON.stringify(userInfo));
+                    $("#user-name").val("");
+                    $("#user-pawd").val("");
+                    // 提示用户注册成功，并在2s后提示信息消失
+                    $(".regist-success-msg").css("display", "block");
+                    setTimeout(function () {
+                        $(".regist-success-msg").css("display", "none");
+                    }, 2000)
+                }
+            }
         }
     });
 </script>

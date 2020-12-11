@@ -344,6 +344,15 @@
     </div>
 </body>
 <script type="text/javascript">
+    // 当用户已经登录就直接进入用户主页，没有登录则需要先登录
+    const user = sessionStorage.getItem("user");
+    if(user != null) {
+        $("header ul li:nth-child(2) a").attr("href","word.html");
+    }
+    else {
+        $("header ul li:nth-child(2) a").attr("href","login.html");
+    }
+    
     // 给下载APP那个按钮设置一个监听事件，当鼠标悬浮时，把二维码显示出来，移出就隐藏
     $(".header-right").bind("mouseover", function () {
         $(".download-erweima").css("display", "inline-block");

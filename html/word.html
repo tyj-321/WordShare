@@ -19,6 +19,10 @@
     <!-- 引入外部层叠样式表 -->
     <link rel="stylesheet" href="../css/iconfont.css" />
     <style type="text/css">
+        body {
+            background-color: #EEEEEE;
+        }
+
         header {
             height: 60px;
             background-color: #209E85;
@@ -82,11 +86,14 @@
         }
 
         .user-info {
+            background-color: #FFFFFF;
             width: 1200px;
             margin: 40px auto;
+            padding: 10px;
+            border-radius: 20px;
         }
 
-        .user-info h1  {
+        .user-info h1 {
             font-weight: 600;
             font-size: 30px;
         }
@@ -103,7 +110,7 @@
         }
 
         .user-info-left {
-            width: 600px;
+            width: 590px;
             height: 270px;
             overflow: hidden;
             margin-top: 20px;
@@ -139,7 +146,7 @@
         }
 
         .user-info-right {
-            width: 600px;
+            width: 590px;
             height: 270px;
             float: right;
             margin-top: 20px;
@@ -176,7 +183,7 @@
         .blockquote small {
             float: right;
         }
-        
+
         .control {
             width: 1000px;
             margin: 30px auto;
@@ -191,7 +198,7 @@
             font-size: 20px;
             cursor: pointer;
         }
-        
+
         .word-note {
             width: 1000px;
             margin: 30px auto;
@@ -201,7 +208,7 @@
             height: 60px;
             text-align: center;
             line-height: 60px;
-            
+
         }
 
         .table tr .time {
@@ -324,7 +331,7 @@
         .footer .down-load-btn span:hover {
             color: #FFFFFF;
         }
-     </style>
+    </style>
 </head>
 
 <body>
@@ -354,7 +361,7 @@
                     <div class="modal-body">
                         <p>翻译结果：</p>
                         <span>美式发音<i class="iconfont Amarica">&#xe62e;</i></span>
-                        <span>英式发音<i class="iconfont England" >&#xe62e;</i></span>
+                        <span>英式发音<i class="iconfont England">&#xe62e;</i></span>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-danger" data-dismiss="modal">关闭</button>
@@ -497,8 +504,8 @@
 </body>
 <script type="text/javascript">
     const user = sessionStorage.getItem("user");
-    if(user != null) {
-        $(".user-info h2:nth-child(1)").html("欢迎"+user);
+    if (user != null) {
+        $(".user-info h2:nth-child(1)").html("欢迎" + user);
     }
 
     // 查询键添加监听事件，点击就查询
@@ -543,54 +550,54 @@
         $("#query-word").val("");
     });
     // 当查询输入框聚焦的时候就把删除键显示 非聚焦就隐藏
-    $("#query-word").bind("focus", function(){
-        $(".glyphicon-remove").css("visibility","visible");
+    $("#query-word").bind("focus", function () {
+        $(".glyphicon-remove").css("visibility", "visible");
     });
-    $("#query-word").bind("blur", function(){
-        $(".glyphicon-remove").css("visibility","hidden");
+    $("#query-word").bind("blur", function () {
+        $(".glyphicon-remove").css("visibility", "hidden");
     });
 
     // 当鼠标在点击下载APP的按钮上就显示二维码 移开会隐藏
-    $(".down-load-btn span:nth-child(3)").bind("mouseover",function (){
-        $(".down-load-btn img:nth-child(1)").css("display","inline-block");
-        $(".down-load-btn img:nth-child(2)").css("display","inline-block");    
+    $(".down-load-btn span:nth-child(3)").bind("mouseover", function () {
+        $(".down-load-btn img:nth-child(1)").css("display", "inline-block");
+        $(".down-load-btn img:nth-child(2)").css("display", "inline-block");
     });
-    $(".down-load-btn span:nth-child(3)").bind("mouseleave",function (){
-        $(".down-load-btn img:nth-child(1)").css("display","none");
-        $(".down-load-btn img:nth-child(2)").css("display","none");    
+    $(".down-load-btn span:nth-child(3)").bind("mouseleave", function () {
+        $(".down-load-btn img:nth-child(1)").css("display", "none");
+        $(".down-load-btn img:nth-child(2)").css("display", "none");
     });
 
-    $(".down-load-btn span:nth-child(4)").bind("mouseover",function (){
-        $(".down-load-btn img:nth-child(5)").css("display","inline-block");
-        $(".down-load-btn img:nth-child(6)").css("display","inline-block");    
+    $(".down-load-btn span:nth-child(4)").bind("mouseover", function () {
+        $(".down-load-btn img:nth-child(5)").css("display", "inline-block");
+        $(".down-load-btn img:nth-child(6)").css("display", "inline-block");
     });
-    $(".down-load-btn span:nth-child(4)").bind("mouseleave",function (){
-        $(".down-load-btn img:nth-child(5)").css("display","none");
-        $(".down-load-btn img:nth-child(6)").css("display","none");    
+    $(".down-load-btn span:nth-child(4)").bind("mouseleave", function () {
+        $(".down-load-btn img:nth-child(5)").css("display", "none");
+        $(".down-load-btn img:nth-child(6)").css("display", "none");
     });
 
     // 单词本里的喇叭按钮点击默认美式发音
-    $(".table tr .iconfont").bind("click", function(e){
+    $(".table tr .iconfont").bind("click", function (e) {
         let crrentNode = e.target.parentNode.nextSibling.nextSibling.firstChild.nextSibling;
         let queryValue = crrentNode.textContent;
         let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + queryValue;
-        let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
+        let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
         $(".modal-body").append(audioElem);
     });
 
     // 点击英式发音就请求英式发音API 利用src可以跨域
-    $(".England").bind("click", function(){
+    $(".England").bind("click", function () {
         let queryValue = $("#query-word").val();
         let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + queryValue;
-        let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
+        let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
         $(".modal-body").append(audioElem);
     });
 
     // 点击美式发音就请求美式发音API 利用src可以跨域
-    $(".Amarica").bind("click", function(){
+    $(".Amarica").bind("click", function () {
         let queryValue = $("#query-word").val();
         let audioUrl = "http://dict.youdao.com/dictvoice?type=0&audio=" + queryValue;
-        let audioElem = $("<audio src="+audioUrl+" autoplay></audio>");
+        let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
         $(".modal-body").append(audioElem);
     });
 </script>
