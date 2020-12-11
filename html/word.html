@@ -86,9 +86,15 @@
             margin: 40px auto;
         }
 
-        .user-info h1 {
+        .user-info h1  {
             font-weight: 600;
             font-size: 30px;
+        }
+
+        .user-info h2 {
+            font-weight: 600;
+            font-size: 30px;
+            color: blueviolet;
         }
 
         .user-info h1 span {
@@ -359,7 +365,8 @@
     </header>
     <!-- 用户内容部分 -->
     <div class="user-info">
-        <h1>已经学习<span>30</span>天</h1>
+        <h2></h2>
+        <h1>你已经学习<span>30</span>天</h1>
         <div class="user-info-left">
             <img src="../src/wordBook.jpg" alt="单词本">
             <div class="book-info">
@@ -489,6 +496,11 @@
     </footer>
 </body>
 <script type="text/javascript">
+    const user = sessionStorage.getItem("user");
+    if(user != null) {
+        $(".user-info h2:nth-child(1)").html("欢迎"+user);
+    }
+
     // 查询键添加监听事件，点击就查询
     $(".glyphicon-search").bind("click", function () {
         let query = $("#query-word").val();

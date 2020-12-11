@@ -19,17 +19,28 @@
             padding: 0 150px 0 150px;
         }
 
+        #container .alert {
+            display: none;
+        }
+
         #page-head #login-register span {
             display: inline-block;
             margin: 0 5px;
         }
 
         #page-head #login-register {
-            margin: 10px 20px 0 5px;
+            float: right;
+            height: 25px;
+            margin-top: 15px;
         }
 
         #login-register .btn {
             display: none;
+        }
+
+        #login-register :nth-child(1) {
+            height: 21px;
+            line-height: 8px;
         }
 
         #logo img {
@@ -39,6 +50,8 @@
 
         #logo {
             text-align: center;
+            display: inline-block;
+            width: 1232px;
         }
 
         #carousel-box {
@@ -421,9 +434,16 @@
 
 <body>
     <div id="container">
+        <!-- 警告框 -->
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>警告！</strong>确认退出当前用户吗？
+            <button type="button" class="btn btn-danger" data-dismiss="alert">确定</button>
+            <button type="button" class="btn btn-success" data-dismiss="alert">取消</button>
+        </div>
         <div id="page-head">
             <!-- 登录和注册部分 -->
-            <div id="login-register" class="pull-right">
+            <div id="login-register">
                 <span class="btn btn-danger">退出</span>
                 <a href="./login.html" id="login">登录</a>
                 <span>|</span>
@@ -1037,10 +1057,14 @@
                                 <h2>论坛推荐</h2>
                                 <ul class="froum-list">
                                     <li><a href="https://web.shanbay.com/team/forum/home" target="_blank">论坛首页</a></li>
-                                    <li><a href="https://web.shanbay.com/team/forum/uses" target="_blank">集思广益(使用答疑区)</a></li>
-                                    <li><a href="https://web.shanbay.com/team/forum/misc" target="_blank">天南海北(灌水区)</a></li>
-                                    <li><a href="https://web.shanbay.com/team/forum/17school" target="_blank">英语学苑(英语学习区)</a></li>
-                                    <li><a href="https://web.shanbay.com/team/forum/daily-translation" target="_blank">每日翻译(在线翻译)</a></li>
+                                    <li><a href="https://web.shanbay.com/team/forum/uses"
+                                            target="_blank">集思广益(使用答疑区)</a></li>
+                                    <li><a href="https://web.shanbay.com/team/forum/misc" target="_blank">天南海北(灌水区)</a>
+                                    </li>
+                                    <li><a href="https://web.shanbay.com/team/forum/17school"
+                                            target="_blank">英语学苑(英语学习区)</a></li>
+                                    <li><a href="https://web.shanbay.com/team/forum/daily-translation"
+                                            target="_blank">每日翻译(在线翻译)</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1057,27 +1081,31 @@
 </body>
 <script type="text/javascript">
     const user = sessionStorage.getItem("user");
-    if(user != null){
-        $("#login").html(user+"的主页");
-        $("#login").attr("href","word.html");
-        $("#login-register .btn").css("display","inline-block");
+    if (user != null) {
+        $("#login").html(user + "的主页");
+        $("#login").attr("href", "word.html");
+        $("#login-register .btn").css("display", "inline-block");
     }
     else {
-        $("#login-register .btn").css("display","none");
+        $("#login-register .btn").css("display", "none");
     }
 
-    $("#login-register .btn").bind("click", function(){
+    $("#login-register .btn").bind("click", function () {
+        $(".alert").css("display", "block");
+    });
+
+    $(".alert .btn-danger").bind("click", function(){
         sessionStorage.clear();
-        $(this).css("display","none");
+        $("#login-register .btn").css("display", "none");
         $("#login").html("登录");
-        $("#login").attr("href","login.html");
-    })
+        $("#login").attr("href", "login.html");
+    });
 
     // 在页面加载完后，小图标的旋转动画开始运行
     $(".icon").css("animation", "revolve 3s linear 0s infinite");
 
     // 加入按钮事件，提示加入成功
-    $(".group-right button").bind("click", function (){
+    $(".group-right button").bind("click", function () {
         $(this).html("JOINED!");
         $(this).removeClass("btn-danger");
         $(this).addClass("btn-success");
@@ -1156,8 +1184,8 @@
         });
     });
 
-     // 当点击上一页时，发送ajax请求数据再次填充
-     $(".glyphicon-chevron-left").bind("click", function () {
+    // 当点击上一页时，发送ajax请求数据再次填充
+    $(".glyphicon-chevron-left").bind("click", function () {
         $.ajax({
             type: "get",
             url: "../json/grouplist.json",

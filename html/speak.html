@@ -308,7 +308,7 @@
             <li>
                 <a href="./header.html"><img src="../src/logo_blank.png" alt="扇贝英语"></a>
             </li>
-            <li><a href="./word.html">单词</a></li>
+            <li><a href="">单词</a></li>
             <li><a href="./read.html">阅读</a></li>
             <li><a href="./speak.html">口语</a></li>
             <li><a href="./listen.html">听力</a></li>
@@ -664,6 +664,15 @@
 </body>
 
 <script type="text/javascript">
+    // 当用户已经登录就直接进入用户主页，没有登录则需要先登录
+    const user = sessionStorage.getItem("user");
+    if(user != null) {
+        $("header ul li:nth-child(2) a").attr("href","word.html");
+    }
+    else {
+        $("header ul li:nth-child(2) a").attr("href","login.html");
+    }
+
     // 获取雅思课程数据
     $.ajax({
         type: "get",

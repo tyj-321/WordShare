@@ -390,18 +390,7 @@
             let userPawd = $("#user-pawd").val();
             let userArray = JSON.parse(localStorage.getItem("users-info")).data;
             for (let i = userArray.length - 1; i >= 0; i--) {
-                console.log(userArray[i].userName);
-                console.log(userArray[i].userPawd);
-                if (userName != userArray[i].userName || userPawd != userArray[i].userPawd) {
-                    // 错误就取消默认提交行为 并提醒错误
-                    // e.preventDefault();
-                    $(".erro-msg").css("display", "block");
-                    // 2s后提示消失
-                    setTimeout(function () {
-                        $(".erro-msg").css("display", "none");
-                    }, 2000)
-                }
-                else if (userName === userArray[i].userName && userPawd === userArray[i].userPawd) {
+                if(userName === userArray[i].userName && userPawd === userArray[i].userPawd) {
                     if (sessionStorage.getItem("user") === null) {
                         sessionStorage.setItem("user", userName);
                         sessionStorage.setItem("pawd", userPawd);
@@ -413,6 +402,15 @@
                     }
                     $("form").attr("action", "word.html");
                     break;
+                }
+                else if (i === 0) {
+                    // 错误就取消默认提交行为 并提醒错误
+                    e.preventDefault();
+                    $(".erro-msg").css("display", "block");
+                    // 2s后提示消失
+                    setTimeout(function () {
+                        $(".erro-msg").css("display", "none");
+                    }, 2000)
                 }
             }
         });
