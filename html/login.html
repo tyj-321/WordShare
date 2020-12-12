@@ -16,6 +16,7 @@
         crossorigin="anonymous"></script>
     <!-- 这里引入外部文件的字体图标样式 -->
     <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="Shortcut Icon" href="../src/title1.ico" type="image/x-icon" />
     <style type="text/css">
         header {
             height: 60px;
@@ -291,7 +292,7 @@
                     </div>
                 </div>
                 <a href="./register.html" target="_blank" class="register">没有账号？<span>注册</span></a>
-                <a href="#" class="forget-pawd">忘记密码</a>
+                <a href="./findpwd.html" class="forget-pawd">忘记密码</a>
                 <div class="login-in">
                     <button type="submit" class="submit btn btn-info">登录</button>
                 </div>
@@ -394,7 +395,6 @@
         });
         // 账号和密码不正确则显示错误信息提示
         $(".submit").bind("click", function (e) {
-            console.log(e);
             let userName = $("#user-name").val();
             let userPawd = $("#user-pawd").val();
             let userArray = JSON.parse(localStorage.getItem("users-info")).data;
