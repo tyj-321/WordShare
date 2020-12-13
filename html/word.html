@@ -18,7 +18,7 @@
     <script src="../js/md5.js"></script>
     <!-- 引入外部层叠样式表 -->
     <link rel="stylesheet" href="../css/iconfont.css" />
-    <link rel="Shortcut Icon" href="../src/title1.ico" type="image/x-icon" />
+    <link rel="Shortcut Icon" href="../src/favicon.ico" type="image/x-icon" />
     <style type="text/css">
         body {
             background-color: #EEEEEE;
@@ -589,17 +589,33 @@
     // 点击英式发音就请求英式发音API 利用src可以跨域
     $(".England").bind("click", function () {
         let queryValue = $("#query-word").val();
-        let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + queryValue;
-        let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
-        $(".modal-body").append(audioElem);
+        if (queryValue.indexOf(" ") > 0) {
+            let query = queryValue.split(" ").join("");
+            let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + query;
+            let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
+            $(".modal-body").append(audioElem);
+        }
+        else {
+            let audioUrl = "http://dict.youdao.com/dictvoice?type=1&audio=" + queryValue;
+            let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
+            $(".modal-body").append(audioElem);
+        }
     });
 
     // 点击美式发音就请求美式发音API 利用src可以跨域
     $(".Amarica").bind("click", function () {
         let queryValue = $("#query-word").val();
-        let audioUrl = "http://dict.youdao.com/dictvoice?type=0&audio=" + queryValue;
-        let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
-        $(".modal-body").append(audioElem);
+        if (queryValue.indexOf(" ") > 0) {
+            let query = queryValue.split(" ").join("");
+            let audioUrl = "http://dict.youdao.com/dictvoice?type=0&audio=" + query;
+            let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
+            $(".modal-body").append(audioElem);
+        }
+        else {
+            let audioUrl = "http://dict.youdao.com/dictvoice?type=0&audio=" + queryValue;
+            let audioElem = $("<audio src=" + audioUrl + " autoplay></audio>");
+            $(".modal-body").append(audioElem);
+        }
     });
 </script>
 
